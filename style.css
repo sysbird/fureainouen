@@ -50,6 +50,14 @@ This theme, like WordPress, is licensed under the GPL.
 	border-color: #F9403B;
 }
 
+#menu-wrapper .menu #small-menu .icon,
+#menu-wrapper .menu #small-menu .icon::before,
+#menu-wrapper .menu #small-menu .icon::after {
+	background-color: #F9403B;
+
+}
+
+
 /* home
 --------------------------------------------- */
 .home #content .information {
