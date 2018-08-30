@@ -291,6 +291,11 @@ This theme, like WordPress, is licensed under the GPL.
 	font-size: 2rem;
 }
 
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+	color: #847d74;
+	border-color: #847d74;
+}
+
 #content h2 {
 	font-size: 1.8rem;
 	clear: both;
@@ -430,7 +435,26 @@ This theme, like WordPress, is licensed under the GPL.
 	#header #branding {
 		float: none;
 		text-align: center;
-		margin: 30px 0;
+		margin: 10px 0 5px 0;
+		transition-property: margin, padding;
+		transition-duration: .5s;
+	 }
+
+	 #header.mini #branding {
+		margin: 0;
+		padding-top: 0;
+	}
+
+	#header #branding #site-title,
+	 #header #branding #site-title a {
+		transition-property: height, opacity;
+		transition-duration: .3s;
+	}
+
+	#header.mini #branding #site-title,
+	#header.mini #branding #site-title a {
+		height: 0;
+		opacity: 0;
 	}
 
 	#header #branding #site-title {
@@ -439,6 +463,11 @@ This theme, like WordPress, is licensed under the GPL.
 
 	#menu-wrapper .menu ul#menu-primary-items {
 		text-align: center;
+	}
+
+	#menu-wrapper .menu ul#menu-primary-items > li > a {
+		padding: 20px 0.8em;
+		height: 60px;
 	}
 
 	#menu-wrapper .menu ul#menu-primary-items li a:hover,
