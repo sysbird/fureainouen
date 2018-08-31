@@ -37,23 +37,29 @@ This theme, like WordPress, is licensed under the GPL.
 
 #header,
 #header #branding #site-title a,
-#header #branding #site-description,
-#footer, 
-#footer a {
+#header #branding #site-description {
 	color: #f48d7c;
+	color: #f04a00;
+}
+
+#footer {
+	background-color: #f04a00;
 }
 
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper .menu ul#menu-primary-items li a {
 	color: #f48d7c;
+	color: #f04a00;
 	border-color: #f48d7c;
+	border-color: #f04a00;
 }
 
 #menu-wrapper .menu #small-menu .icon,
 #menu-wrapper .menu #small-menu .icon::before,
 #menu-wrapper .menu #small-menu .icon::after {
 	background-color: #f48d7c;
+	background-color: #f04a00;
 
 }
 
@@ -71,7 +77,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content section:nth-child(odd) {
-	background: #f9f7f3; 
+	background: #f3f0e6; 
 }
 
 .home #content .more {
@@ -137,7 +143,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #footer #widget-area {
-	background: #f9f7f3;
+	background: #f3f0e6;
 }
 
 #footer #widget-area .widget,
@@ -276,6 +282,7 @@ This theme, like WordPress, is licensed under the GPL.
 	display: inline;
 	font-size: 0.9em;
 	color: #f48d7c;
+	color: #f04a00;
 	margin-bottom: 0;
 }
 
@@ -477,6 +484,9 @@ This theme, like WordPress, is licensed under the GPL.
 		background-color: #FFF;
 		color: #f48d7c;
 		border-color: #f48d7c;
+		color: #f04a00;
+		border-color: #f04a00;
+
 	  }
 	
 	#content .hentry .entry-header .entry-title,

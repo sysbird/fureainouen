@@ -72,7 +72,7 @@ function fureainouen_scripts() {
 	}
 
 	// fureainouen js
-	wp_enqueue_script( 'fureainouen', get_stylesheet_directory_uri() .'/js/script.js', array( 'jquery', 'jquerytile' ), '1.10' );
+	wp_enqueue_script( 'fureainouen', get_stylesheet_directory_uri() .'/js/fureainouen.js', array( 'jquery', 'jquerytile' ), '1.10' );
 }
 add_action( 'wp_enqueue_scripts', 'fureainouen_scripts' );
 
@@ -435,25 +435,6 @@ function fureainouen_get_sweets_price() {
 
 	return NULL;
 }
-
-//////////////////////////////////////////////////////
-// bread crumb
-function fureainouen_content_header( $arg ){
-
-	$html = '';
-
-	if( !is_home()){
-		if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) {
-			$html .= '<div class="bread_crumb_wrapper">';
-			$html .= WP_SiteManager_bread_crumb::bread_crumb( array( 'echo'=>'false', 'home_label' => 'ホーム', 'elm_class' => 'bread_crumb container' ));
-			$html .= '</div>';
-		}
-	}
-
-	return $html;
-
-}
-add_action( 'birdfield_content_header', 'fureainouen_content_header' );
 
 //////////////////////////////////////////////////////
 // show eyecarch on dashboard
