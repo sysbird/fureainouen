@@ -40,27 +40,26 @@ This theme, like WordPress, is licensed under the GPL.
 #header #branding #site-description {
 	color: #f48d7c;
 	color: #f04a00;
+	color: #e6775c;
 }
 
 #footer {
-	background-color: #f04a00;
+	background-color: #e6775c;
 }
 
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper .menu ul#menu-primary-items li a {
 	color: #f48d7c;
-	color: #f04a00;
+	color: #e6775c;
 	border-color: #f48d7c;
-	border-color: #f04a00;
+	border-color: #e6775c;
 }
 
 #menu-wrapper .menu #small-menu .icon,
 #menu-wrapper .menu #small-menu .icon::before,
 #menu-wrapper .menu #small-menu .icon::after {
-	background-color: #f48d7c;
-	background-color: #f04a00;
-
+	background-color: #e6775c;
 }
 
 
@@ -73,11 +72,15 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content .information .container {
-	padding: 1.6em 0;
+	padding: 1.7rem 0;
+}
+
+.home #content #blog .container {
+	padding-bottom: 1.7rem;
 }
 
 .home #content section:nth-child(odd) {
-	background: #f3f0e6; 
+	background: #f8f8f4; 
 }
 
 .home #content .more {
@@ -85,11 +88,10 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content #blog {
-	padding-top: 1.6em;
+	padding-top: 1.7rem;
 }
 
 .home #content #blog ul.article {
-	margin-top: -10px;
 	overflow: hidden;
 	*zoom: 1;
 }
@@ -99,18 +101,37 @@ This theme, like WordPress, is licensed under the GPL.
 	display: none;
 }
 
+.home #content #blog ul.article .hentry .entry-header .category {
+	background: #c8d199;
+	color: #000;
+	border-radius: 2px;
+	padding: 2px 5px;
+	font-size: 0.85em;
+}
+
+.home #content #blog ul.article .hentry .entry-header .category.school {
+	background: #eae099;
+}
+
+.home #content #blog ul.article .hentry .entry-header .category.ivent {
+	background: #f2bbad;
+}
+
 #content .more {
-	margin-bottom: 1.6em;
+	margin-bottom: 1.7rem;
 	text-align: center;
 }
 
 #content .more a {
 	display: block;
-	background-color: #adc65d;
-	color: #FFF;
-	padding: 0.8em;
+	background-color: #f2f2e9;
+	color: #222327;
+	border: solid 1px #ede7e1;
+	padding: 0.8rem;
 	border-radius: 4px;
-	font-size: 0.96em;
+	font-size: 0.96rem;
+	width: 90%;
+	margin: 0 auto;
 }
 
 #content .more a:before {
@@ -131,8 +152,8 @@ This theme, like WordPress, is licensed under the GPL.
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	padding-right: 0.4em;
-	margin-bottom: 1.6em;
+	padding-right: 0.4rem;
+	margin-bottom: 1.7rem;
 }
 
 /* footer
@@ -143,7 +164,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #footer #widget-area {
-	background: #f3f0e6;
+	background: #f8f8f4;
 }
 
 #footer #widget-area .widget,
@@ -180,7 +201,7 @@ This theme, like WordPress, is licensed under the GPL.
 	padding: 0 15px;
 	line-height:  2.4;
 	border-radius: 20px;
-	font-size: 0.9em;
+	font-size: 0.9rem;
 	margin-top: 20px;
 }
 
@@ -203,23 +224,22 @@ This theme, like WordPress, is licensed under the GPL.
 --------------------------------------------- */
 #content .tile {
 	list-style: none;
-	margin: -10px 0 1.6em 0;
+	margin: 0 0 1.7rem 0;
 	padding: 0;
 	overflow: hidden;
 	*zoom: 1; }
 
 #content .tile .hentry {
-	border: solid 1px #E6E6E6;
-	border-radius: 4px;
-	margin: 10px 1% 0;
+	margin: 0 1% 15px;
 	padding: 0;
 	background: #FFF;
 	width: 48%;
 	float: left;
 }
 
+.home #content #blog ul.article .hentry .entry-header,
 #content .tile .hentry .entry-header {
-	padding: 5px;
+	padding: 10px 0;
 	margin: 0;
 }
 
@@ -234,22 +254,18 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .tile .hentry a:hover {
 	text-decoration: none;
-	background: #F5F5F5;
 }
 
 #content .tile .hentry,
 .home #content #blog ul.article .hentry,
 .blog #content #blog ul.article .hentry {
-	border-color: #f9f7f3;
-    -webkit-box-shadow: rgba(132, 125, 166, 0.05) 0 2px 8px;
-    -moz-box-shadow: rgba(132, 125, 166, 0.05) 0 2px 8px;
-    box-shadow: rgba(132, 125, 166, 0.05) 0 2px 8px;
+	border: none;
+	border-radius: 0;
 }
 
-#content .tile .hentry a:hover,
 .home #content #blog ul.article .hentry a:hover,
 .blog #content #blog ul.article .hentry a:hover {
-	background: #f9f7f3;
+	background: transparent;
 }
 
 /* tile entry-eyecatch
@@ -280,15 +296,15 @@ This theme, like WordPress, is licensed under the GPL.
 --------------------------------------------- */
 #content .type-vegetable p.catchcopy {
 	display: inline;
-	font-size: 0.9em;
+	font-size: 0.9rem;
 	color: #f48d7c;
 	color: #f04a00;
 	margin-bottom: 0;
 }
 
 .single #content .type-vegetable p.catchcopy {
-	font-size: 1em;
-	margin-bottom: 0.8em;
+	font-size: 1rem;
+	margin-bottom: 0.8rem;
 }
 
 /* title text
@@ -329,7 +345,7 @@ This theme, like WordPress, is licensed under the GPL.
 #map-canvas {
 	height: 320px;
 	width: 100%;
-	margin: 1.6em 0 0;
+	margin: 1.7rem 0 0;
 }
 
 .home #map-canvas {
@@ -347,7 +363,7 @@ This theme, like WordPress, is licensed under the GPL.
 	color: #999;
 	font-size: 0.9rem;
 	margin: 0 auto;
-	padding: 0.4em 0;
+	padding: 0.4rem 0;
 }
 
 #content .bread_crumb li {
@@ -365,8 +381,8 @@ This theme, like WordPress, is licensed under the GPL.
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
-	padding-left: 0.4em;
-	padding-right: 0.2em;
+	padding-left: 0.4rem;
+	padding-right: 0.2rem;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -394,17 +410,14 @@ This theme, like WordPress, is licensed under the GPL.
 		*zoom: 1;
 	}
 
-	.home #content #blog {
-		padding-top: 1.4%;
-	}
-
 	#content .more {
 		text-align: right;
 	}
 
 	#content .more  a {
 		display: inline-block;
-		font-size: 1em;
+		font-size: 1rem;
+		width: auto;
 	}
 
 	/* google maps */
@@ -414,7 +427,7 @@ This theme, like WordPress, is licensed under the GPL.
 
 	/* fruits page */
 	#content table.fruits-calendar {
-		font-size: 1em;
+		font-size: 1rem;
 	}
 
 	#content table.fruits-calendar th,
@@ -433,7 +446,7 @@ This theme, like WordPress, is licensed under the GPL.
 	}
 
 	#content table.fruits-calendar span {
-		padding: 0.2em 0;
+		padding: 0.2rem 0;
 	}
 }
 
@@ -473,7 +486,7 @@ This theme, like WordPress, is licensed under the GPL.
 	}
 
 	#menu-wrapper .menu ul#menu-primary-items > li > a {
-		padding: 20px 0.8em;
+		padding: 20px 0.8rem;
 		height: 60px;
 	}
 
@@ -482,8 +495,6 @@ This theme, like WordPress, is licensed under the GPL.
 	#menu-wrapper .menu ul#menu-primary-items li ul li a:hover,
 	#menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
 		background-color: #FFF;
-		color: #f48d7c;
-		border-color: #f48d7c;
 		color: #f04a00;
 		border-color: #f04a00;
 
@@ -498,13 +509,20 @@ This theme, like WordPress, is licensed under the GPL.
 		font-size: 2rem;
 	}
 
-	#content .tile .hentry {
-		width: 300px;
-		margin: 10px 5px 0 5px;
+	.home #content #blog ul.article,
+	#content .tile {
+		margin-left: -15px;
 	}
 
+	.home #content #blog ul.article .hentry,
+	#content .tile .hentry {
+		width: 300px;
+		margin: 0 0 15px 15px;
+	}
+
+	.home #content #blog ul.article .hentry .entry-header,
 	#content .tile .hentry .entry-header {
-		padding:  20px;
+		padding:  15px 0;
 	}
 
 	#widget-area .widget {
