@@ -12,7 +12,7 @@
 	<?php if ( have_posts()) : ?>
 		<section id="blog">
 			<div class="container">
-				<?php $category_id = get_cat_ID( '公園だより' ); ?>
+				<?php $category_id = get_cat_ID( '農園会だより' ); ?>
 				<h2><a href="<?php echo get_category_link( $category_id ); ?>">公園だより</a></h2>
 
 				<ul class="article">
@@ -29,6 +29,7 @@
 		$args = array(
 			'post_type' => 'page',
 			'tag' => 'information',
+			'orderby' => 'postdate',
 			'post_status' => 'publish'
 		);
 		$the_query = new WP_Query($args);
@@ -46,8 +47,8 @@
 			?>
 
 			<?php
-				if( !( false === strpos( $post->post_name, 'fruit' ) ) ){
-					echo do_shortcode('[miyazaki_en_fruits_list]');
+				if( !( false === strpos( $post->post_name, 'vegetable' ) ) ){
+					echo do_shortcode('[fureainouen_vegetable_list]');
 				}
 				else{
 					the_content('');
@@ -65,7 +66,7 @@
 	?>
 
 	<section class="information">
-	<?php  echo do_shortcode('[fureainouen_map]'); ?>
+	<?php  // echo do_shortcode('[fureainouen_map]'); ?>
 	</section>
 
 	<?php birdfield_content_footer(); ?>

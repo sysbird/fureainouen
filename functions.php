@@ -195,13 +195,13 @@ function fureainouen_fruits_calendar ( $atts ) {
 add_shortcode( 'fureainouen_fruits_calendar', 'fureainouen_fruits_calendar' );
 
 //////////////////////////////////////////////////////
-// Shortcode Fruit List
-function fureainouen_fruits_list ( $atts ) {
+// Shortcode Vegetable List
+function fureainouen_vegetable_list ( $atts ) {
 
 	ob_start();
 
 	$args = array(
-		'post_type' => 'fruits',
+		'post_type' => 'vegetables',
 		'post_status' => 'publish',
 		'orderby'	=> 'rand',
 	);
@@ -219,7 +219,7 @@ function fureainouen_fruits_list ( $atts ) {
 		?> <div class="tile"><?php
 
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			get_template_part( 'content', 'fruits' );
+			get_template_part( 'content', 'vegetable' );
 		endwhile;
 
 		?></div><?php
@@ -229,7 +229,7 @@ function fureainouen_fruits_list ( $atts ) {
 
 	return ob_get_clean();
 }
-add_shortcode( 'fureainouen_fruits_list', 'fureainouen_fruits_list' );
+add_shortcode( 'fureainouen_vegetable_list', 'fureainouen_vegetable_list' );
 
 //////////////////////////////////////////////////////
 // Shortcode link button
@@ -524,8 +524,8 @@ function fureainouen_handle_upload( $file )
 		if (! is_wp_error($image)) {
 			$exif = exif_read_data( $file[ 'file' ] );
 			$orientation = $exif[ 'Orientation' ];
-			$max_width = 930;
-			$max_height = 930;
+			$max_width = 1280;
+			$max_height = 900;
 			$size = $image->get_size();
 			$width = $size[ 'width' ];
 			$height = $size[ 'height' ];
