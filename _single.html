@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>サンプル &#8211; HTMLのサンプルページ</title>
 <meta name='robots' content='noindex,follow' />
-<link rel='stylesheet' id='parent-style-css'  href='../birdfield/style.css?ver=4.9.4' type='text/css' media='all' />
-<link rel='stylesheet' id='birdfield-css'  href='style.css?ver=4.9.4' type='text/css' media='all' />
-
-<link rel='stylesheet' id='birdfield_ja-css'  href='../birdfield/css/ja.css?ver=4.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='birdfield/style.css?ver=4.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='birdfield-css'  href='style_no_parallax.css?ver=4.9.4' type='text/css' media='all' />
 <script type='text/javascript' src='js/jquery.js?ver=1.12.4'></script>
-<script type='text/javascript' src='../birdfield/js/jquery.tile.js?ver=1.1.2'></script>
+<script type='text/javascript' src='birdfield/js/jquery.tile.js?ver=1.1.2'></script>
 <script type='text/javascript' src='js/fureainouen.js?ver=1.00'></script>
+<style>
+    a {
+        pointer-events: none;
+    }
+</style>
 </head>
-<body class="page-template-default page page-id-2 logged-in custom-background ja">
+<body class="page-template-default page page-id-2 logged-in custom-background">
 
 <div class="wrapper fixed-header">
 
@@ -27,34 +30,24 @@
 			</div>
 
 			<nav id="menu-wrapper">
-				<div class="menu"><button id="small-menu" type="button"><span class="icon"></span></button><ul id="menu-primary-items" class=""><li id="menu-item-1081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"><a href="#">トップページ</a></li>
-<li id="menu-item-1087" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1087"><a href="#">オレンジ</a>
-<ul  class="sub-menu">
-	<li id="menu-item-1088" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1088"><a href="#">赤</a></li>
-	<li id="menu-item-1089" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1089"><a href="#">ピンク</a>
-	<ul  class="sub-menu">
-		<li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="#">ラズベリー</a></li>
-	</ul>
-</li>
-	<li id="menu-item-1090" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1090"><a href="#">緑</a>
-	<ul  class="sub-menu">
-		<li id="menu-item-1093" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1093"><a href="#">GPS写真を投稿してみるテスト</a></li>
-		<li id="menu-item-1094" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1094"><a href="#">まじかるブラゲ学院</a></li>
-		<li id="menu-item-1095" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1095"><a href="#">アイキャッチがちょっと小さめのを投稿してみるテスト</a></li>
-		<li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="#">ドラゴンクルセイド2</a></li>
-	</ul>
-</li>
+				<div class="menu">
+						<button id="small-menu" type="button"><span class="icon"></span></button>
+					<ul id="menu-primary-items" class=""><li id="menu-item-107" class="home menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-107"><a href="#">ホーム</a></li>
+<li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-116"><a href="#">かしわぎ公園の紹介</a>
+<ul class="sub-menu">
+	<li id="menu-item-111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a href="#">スタンド部会</a></li>
+	<li id="menu-item-117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="#">給食部会</a></li>
 </ul>
 </li>
-<li id="menu-item-1082" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-has-children menu-item-1082"><a href="#">サンプルページ</a>
-<ul  class="sub-menu">
-	<li id="menu-item-1083" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1083"><a href="#">Simple Mapをつかって地図を表示してみるテスト</a></li>
-	<li id="menu-item-1084" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1084"><a href="#">GPS写真を投稿してみるテスト</a></li>
-	<li id="menu-item-1085" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1085"><a href="#">折り返しの問題とコードの表示</a></li>
-	<li id="menu-item-1086" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1086"><a href="#">おおきな画像を貼ったらどうなるかの確認</a></li>
-</ul>
+	<li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-115"><a href="#">イベント・お祭</a>
+		<ul class="sub-menu">
+			<li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="#">七草がゆ</a></li>
+		</ul>
 </li>
-</ul></div>			</nav>
+</ul>
+				</div>
+			</nav>
+
 		</div>
 	</header>
 
@@ -213,48 +206,59 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
 
 	</div>
 
-	<footer id="footer">
-            <section id="widget-area">
-                <div class="container">
-                    <div class="left">
-                        <div class="widget"><h3>かしわぎ公園</h3>			<div class="textwidget"><p><img src="_images/qr-miyazaki-en.gif" alt="QRコード" style="float: right; width: 100px;">〒160-0023<br>新宿区西新宿7-14
-    </div>
-            </div><div class="widget"><div class="menu-main-navigation-container"><ul id="menu-main-navigation" class="menu"><li class="home menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-107"><a href="#">ホーム</a></li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-116"><a href="#">かしわぎ公園の紹介</a>
-    <ul class="sub-menu">
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a href="#">新宿区の花</a></li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="#">アクセス</a></li>
-    </ul>
-    </li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-115"><a href="#">植物</a>
-    <ul class="sub-menu">
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="#">花</a></li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="#">野菜</a></li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="#">くだもの</a></li>
-    </ul>
-    </li>
-    </ul></div></div><div class="widget"><form role="search" method="get" id="searchform" action="#">
-        <div><label class="screen-reader-text" for="s">Search for:</label>
-            <input type="text" value="" name="s" id="s" placeholder="検索…">
-            <input type="submit" id="searchsubmit" value="&#xf002;">
-        </div>
-    </form></div>				</div>
-                    <div class="right">
-                        <div id="fb-root" style="width: 500px; height: 500px; background-color: #DDD;"></div>
+<footer id="footer">
+    <section id="widget-area">
+        <div class="container">
+            <div class="left">
+                <div class="widget"><h3>かしわぎ公園</h3>
+                    <div class="textwidget">
+                        <p><div style="float: right; width: 100px; height: 100px; background: #CCC;">QRコード</div>〒160-0023<br>新宿区西新宿7-14</p>
                     </div>
                 </div>
-            </section>
-    
-            <div class="container">
-                <div class="site-title">
-                    <a href="#">KASHIWAGI-KOEN</a>
-                    Copyright &copy; 2018 All Rights Reserved.			</div>
+                <div class="widget">
+                    <div class="menu-main-navigation-container">
+            
+                    <ul id="menu-primary-items" class=""><li id="menu-item-107" class="home menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-107"><a href="#">ホーム</a></li>
+                    <li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-116"><a href="#">かしわぎ公園の紹介</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a href="#">スタンド部会</a></li>
+                        <li id="menu-item-117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="#">給食部会</a></li>
+                    </ul>
+                    </li>
+                        <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-115"><a href="#">イベント・お祭</a>
+                            <ul class="sub-menu">
+                                <li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="#">七草がゆ</a></li>
+                            </ul>
+                    </li>
+                    </ul>
+                    
+                    </div>
+                </div>
+            
+                <div class="widget">
+                    <form role="search" method="get" id="searchform" action="#">
+                        <div><label class="screen-reader-text" for="s">Search for:</label>
+                        <input type="text" value="" name="s" id="s" placeholder="検索…">
+                        <input type="submit" id="searchsubmit" value="&#xf002;">
+                        </div>
+                    </form>
+                </div>
             </div>
-            <p id="back-top"><a href="#top"><span>ページトップへ</span></a></p>
-        </footer>
+
+            <div class="right">
+                    <div id="fb-root" style="width: 460px; height: 500px; background-color: #CCC;">Facebook</div>
+            </div>
+        </div>
+    </section>
     
+    <div class="container">
+        <div class="site-title">
+            <a href="#">KASHIWAGI-KOEN</a>
+            Copyright &copy; 2018 All Rights Reserved.
+        </div>
+    </div>
+    <p id="back-top"><a href="#top"><span>ページトップへ</span></a></p>
+</footer>
 </div><!-- wrapper -->
-
-
 </body>
 </html>
