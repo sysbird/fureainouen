@@ -27,24 +27,24 @@ This theme, like WordPress, is licensed under the GPL.
 #header,
 #header #branding #site-title a,
 #header #branding #site-description {
-	color: #b83036;
+	color: #67bc63;
 }
 
 #footer {
-	background-color: #b83036;
+	background-color: #67bc63;
 }
 
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper .menu ul#menu-primary-items li a {
-	color: #b83036;
-	border-color: #b83036;
+	color: #67bc63;
+	border-color: #67bc63;
 }
 
 #menu-wrapper .menu #small-menu .icon,
 #menu-wrapper .menu #small-menu .icon::before,
 #menu-wrapper .menu #small-menu .icon::after {
-	background-color: #b83036;
+	background-color: #67bc63;
 }
 
 /* home
@@ -86,7 +86,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content #blog ul.article .hentry .entry-header .category {
-	background: #758c00;
+	background: #67bc63;
 	color: #FFF;
 	border-radius: 3em;
 	padding: 2px 1em;
@@ -95,11 +95,11 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content #blog ul.article .hentry .entry-header .category.school {
-	background: #ccb100;
+	background: #ffbf31;
 }
 
 .home #content #blog ul.article .hentry .entry-header .category.event {
-	background: #b83036;
+	background: #ff5d5d;
 	
 }
 

@@ -16,44 +16,28 @@ Text Domain: fureainouen
 This theme, like WordPress, is licensed under the GPL.
 */
 
-.wrapper {
-	background: url("_images/bg_contents01.jpg") repeat left top;
-}
-
 /* header
 --------------------------------------------- */
 #header,
-#header.mini {
-	background: #f8f8f4;
-	background: url("_images/wrapper.png") repeat left top;
+#header.mini,
+#footer {
+	background: #EF4A00;
 }
 
 #header,
 #header #branding #site-title a,
 #header #branding #site-description {
-	color: #61ad93;
+	color: #FFF;
 }
 
 #footer {
-	background-color: #61ad93;
-}
-
-/* Menu
--------------------------------------------------------------- */
-#menu-wrapper .menu ul#menu-primary-items li a {
-	color: #61ad93;
-	border-color: #61ad93;
-}
-
-#menu-wrapper .menu #small-menu .icon,
-#menu-wrapper .menu #small-menu .icon::before,
-#menu-wrapper .menu #small-menu .icon::after {
-	background-color: #61ad93;
+	background-color: #EF4A00;
 }
 
 /* home
 --------------------------------------------- */
 .home #content .information {
+	background: #FFF;
 	position: relative;
 	z-index: 1;
 }
@@ -67,8 +51,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content section:nth-child(odd) {
-	background: #f8f8f4; 
-	background: url("_images/wrapper.png") repeat left top;
+	background: #f4f0e7; 
 }
 
 .home #content .more {
@@ -90,24 +73,19 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content #blog ul.article .hentry .entry-header .category {
-	background: #61ad93;
+	background: #8dc21f;
 	color: #FFF;
-	border-radius: 3em;
-	padding: 2px 1em;
+	border-radius: 2px;
+	padding: 2px 5px;
 	font-size: 0.85em;
-	font-weight: bold;
 }
 
 .home #content #blog ul.article .hentry .entry-header .category.school {
-	background: #de8e37;
-}
-
-.home #content #blog ul.article .hentry .entry-header .category.recipe {
-	background: #cb6654;
+	background: #fccf00;
 }
 
 .home #content #blog ul.article .hentry .entry-header .category.event {
-	background: #4ca1c0;
+	background: #EF4A00;
 }
 
 #content .more {
@@ -157,8 +135,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #footer #widget-area {
-	background: #f8f8f4;
-	background: url("_images/wrapper.png") repeat left top;
+	background: #f4f0e7;
 }
 
 #footer #widget-area .widget,
@@ -226,6 +203,7 @@ This theme, like WordPress, is licensed under the GPL.
 #content .tile .hentry {
 	margin: 0 1% 15px;
 	padding: 0;
+	background: #FFF;
 	width: 48%;
 	float: left;
 }
@@ -290,7 +268,8 @@ This theme, like WordPress, is licensed under the GPL.
 #content .type-vegetable p.catchcopy {
 	display: inline;
 	font-size: 0.9rem;
-	color: #61ad93; 
+	color: #f48d7c;
+	color: #f04a00;
 	margin-bottom: 0;
 }
 
@@ -320,7 +299,7 @@ This theme, like WordPress, is licensed under the GPL.
 .archive .content-title,
 #content h2 a,
 #content .hentry .entry-header .entry-title {
-	color: #222327;
+	color: #847d74;
 }
 
 #content ul.article .hentry .entry-header,
@@ -452,32 +431,14 @@ This theme, like WordPress, is licensed under the GPL.
 	
 	#header.mini {
 		height: 60px;
-		background-color: rgba(248, 248, 244, 1);
+		background-color: rgba(239, 74, 0, 0.9);
 	}
 
-	#wall {
-		padding-top: 698px;
-		padding-bottom: 40px;
-	}
-
-	#wall .headerimage {
-		max-width: 930px;
-		margin: 0 auto;
-	}
-
-	.fixed-header #wall .headerimage .fixedimage {
-		padding-top: 698px;
-		position: relative;
-	 }
-	
 	#menu-wrapper .menu ul#menu-primary-items li a:hover,
 	#menu-wrapper .menu ul#menu-primary-items li ul li a,
 	#menu-wrapper .menu ul#menu-primary-items li ul li a:hover,
 	#menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
-		background-color: #f8f8f4;
-		background: url("_images/wrapper.png") repeat left top;
-		color: #61ad93;
-		border-color: #61ad93;
+		background-color: #f04a00;
 	  }
 	
 	#content .hentry .entry-header .entry-title,
@@ -505,47 +466,6 @@ This theme, like WordPress, is licensed under the GPL.
 		padding:  15px 0;
 	}
 
-	#content .hentry .entry-eyecatch {
-		position: relative;
-		width: 300px;
-		height: 300px;
-		padding-top: 0;
-		display: inline-block;
-		overflow: hidden;
-	}
-	
-	#content .hentry .entry-eyecatch img {
-		position: absolute;
-		width: auto;
-		height: auto;
-		top: 50%;
-		left: 50%;
-		min-height: 100%;
-		min-width: 100%;
-		-ms-transform: translateX(-50%) translateY(-50%);
-		-moz-transform: translateX(-50%) translateY(-50%);
-		-webkit-transform: translateX(-50%) translateY(-50%);
-		transform: translateX(-50%) translateY(-50%);
-		border-radius: 0;
-	}
-
-	@supports ( object-fit: cover ) {
-		#content .hentry .entry-eyecatch img {
-			position: static;
-			height: 100%;
-			width: 100%;
-			left: 0;
-			-o-object-fit: cover;
-			object-fit: cover;
-			top: 0;
-			-ms-transform: none;
-			-moz-transform: none;
-			-webkit-transform: none;
-			transform: none;
-		}
-	}
-
-	
 	#widget-area .widget {
 		margin:  20px 0 0 0;
 	}
