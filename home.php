@@ -69,7 +69,7 @@
 				'post_type' => 'vegetable',
 				'meta_key' => '_thumbnail_id',
 				'posts_per_page' => 6,
-				'orderby' => 'random',
+				'orderby' => 'rand',
 				'post_status' => 'publish'
 				);
 			$the_query = new WP_Query($args);
