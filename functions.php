@@ -22,7 +22,6 @@ function fureainouen_init() {
 	// add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	// add post type fruits
 	$labels = array(
 		'name'		=> '野菜',
 		'all_items'	=> '野菜の一覧',
@@ -39,6 +38,23 @@ function fureainouen_init() {
 
 	register_post_type( 'vegetables', $args );
 
+	// add post type vegetable
+	$labels = array(
+		'name'		=> '板橋区でとれる野菜・果物・花卉',
+		'all_items'	=> '板橋区でとれる野菜・果物・花卉の一覧',
+		);
+
+	$args = array(
+		'labels'			=> $labels,
+		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+		'public'			=> true,	// 公開するかどうが
+		'show_ui'			=> true,	// メニューに表示するかどうか
+		'menu_position'		=> 5,		// メニューの表示位置
+		'has_archive'		=> true,	// アーカイブページの作成
+		);
+
+	register_post_type( 'vegetable', $args );
+
 }
 add_action( 'init', 'fureainouen_init', 0 );
 
@@ -47,13 +63,18 @@ add_action( 'init', 'fureainouen_init', 0 );
 function fureainouen_query( $query ) {
 
  	if ( $query->is_home() && $query->is_main_query() ) {
-		// toppage news
-		$query->set( 'cat', get_cat_ID( 'お知らせ' ));
-		$query->set( 'posts_per_page', 3 );
+		 if( !is_paged() ){
+			// toppage news
+			$query->set( 'posts_per_page', 3 );
+		 }
+		 else{
+			//$query->set( 'offset', -3 );
+			$query->set( 'posts_per_page', 9 );
+		 }
 	}
 
-	if ($query->is_main_query() && is_post_type_archive('fruits')) {
-		// fruits
+	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
+		// vegetable
 		$query->set( 'posts_per_page', -1 );
 		$query->set( 'orderby', 'rand' );
 	}
@@ -102,8 +123,8 @@ function fureainouen_map ( $atts ) {
 add_shortcode( 'fureainouen_map', 'fureainouen_map' );
 
 //////////////////////////////////////////////////////
-// Shortcode Fruits Calendar Link
-function fureainouen_fruits_calendar_link ( $atts ) {
+// Shortcode vegetable Calendar Link
+function fureainouen_vegetable_calendar_link ( $atts ) {
 
 	$html = '';
 	if ( wp_is_mobile() ){
@@ -111,28 +132,28 @@ function fureainouen_fruits_calendar_link ( $atts ) {
 		$html = '<p><a href="' .get_the_permalink( $page->ID) .'">&raquo;' .$page->post_title .'</a></p>';
 	}
 	else{
-		$html = do_shortcode( '[fureainouen_fruits_calendar]' );
+		$html = do_shortcode( '[fureainouen_vegetable_calendar]' );
 	}
 
 	return $html;
 }
-add_shortcode( 'fureainouen_fruits_calendar_link', 'fureainouen_fruits_calendar_link' );
+add_shortcode( 'fureainouen_vegetable_calendar_link', 'fureainouen_vegetable_calendar_link' );
 
 //////////////////////////////////////////////////////
-// Shortcode Fruits Calendar
-function fureainouen_fruits_calendar ( $atts ) {
+// Shortcode vegetable Calendar
+function fureainouen_vegetable_calendar ( $atts ) {
 
 	extract( shortcode_atts( array(
 		'title' => 'no'
 		), $atts ) );
 
-	$html_table_header = '<table class="fruits-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span><span>1月</span><span>2月</span><span>3月</span></th></tr>';
+	$html_table_header = '<table class="vegetable-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span><span>1月</span><span>2月</span><span>3月</span></th></tr>';
 	$html_table_footer = '</tbody></table>';
 	$html = '';
 
 	$args = array(
 		'posts_per_page' => -1,
-		'post_type'	=> 'fruits',
+		'post_type'	=> 'vegetable',
 		'post_status'	=> 'publish',
 		'meta_key'		=> 'type',
 		'orderby'		=> 'meta_value',
@@ -149,7 +170,7 @@ function fureainouen_fruits_calendar ( $atts ) {
 				$html .= $html_table_footer;
 			}
 
-			$html .= '<div class="fruits-meta">' .fureainouen_get_type_label( $type ) .'</div>';
+			$html .= '<div class="vegetable-meta">' .fureainouen_get_type_label( $type ) .'</div>';
 			$type_current = $type;
 			$html .= $html_table_header;
 		}
@@ -187,21 +208,21 @@ function fureainouen_fruits_calendar ( $atts ) {
 	}
 
 	if( 'yes' === $title ){
-		$html = '<h2>野菜収穫カレンダー</h2>' .$html;
+		$html = '<h2>カレンダー</h2>' .$html;
 	}
 
 	return $html;
 }
-add_shortcode( 'fureainouen_fruits_calendar', 'fureainouen_fruits_calendar' );
+add_shortcode( 'fureainouen_vegetable_calendar', 'fureainouen_vegetable_calendar' );
 
 //////////////////////////////////////////////////////
-// Shortcode Vegetable List
+// Shortcode vegetable List
 function fureainouen_vegetable_list ( $atts ) {
 
 	ob_start();
 
 	$args = array(
-		'post_type' => 'vegetables',
+		'post_type' => 'vegetable',
 		'post_status' => 'publish',
 		'orderby'	=> 'rand',
 	);
@@ -276,7 +297,7 @@ function fureainouen_popuplink ( $atts ) {
 add_shortcode( 'fureainouen_popuplink', 'fureainouen_popuplink' );
 
 //////////////////////////////////////////////////////
-// Display the Featured Image at fruit page
+// Display the Featured Image at vegetable page
 function fureainouen_post_image_html( $html, $post_id, $post_image_id ) {
 
 	if( !( false === strpos( $html, 'anchor' ) ) ){
@@ -288,11 +309,11 @@ function fureainouen_post_image_html( $html, $post_id, $post_image_id ) {
 add_filter( 'post_thumbnail_html', 'fureainouen_post_image_html', 10, 3 );
 
 /////////////////////////////////////////////////////
-// get type label in fruits
+// get type label in vegetable
 function fureainouen_get_type_label( $value, $anchor = TRUE ) {
 	$label ='';
 	$fields = get_field_object( 'type' );
-	$url = get_post_type_archive_link( 'fruits' );
+	$url = get_post_type_archive_link( 'vegetable' );
 
 	if( array_key_exists( 'choices' , $fields ) ){
 		$label .= '<span>';
@@ -310,11 +331,11 @@ function fureainouen_get_type_label( $value, $anchor = TRUE ) {
 }
 
 /////////////////////////////////////////////////////
-// get season label in fruits
+// get season label in vegetable
 function fureainouen_get_season_label( $value, $anchor = TRUE ) {
 	$label ='';
 	$fields = get_field_object( 'season' );
-	$url = get_post_type_archive_link( 'fruits' );
+	$url = get_post_type_archive_link( 'vegetable' );
 
 	if( is_array($value)){
 		foreach ( $value as $key => $v ) {
@@ -341,7 +362,7 @@ function fureainouen_get_season_label( $value, $anchor = TRUE ) {
 }
 
 /////////////////////////////////////////////////////
-// add permalink parameters for fruits
+// add permalink parameters for vegetable
 function fureainouen_query_vars( $vars ){
 	$vars[] = "type";
 	$vars[] = "season";
@@ -413,24 +434,12 @@ function fureainouen_get_page( $params ) {
 }
 
 /////////////////////////////////////////////////////
-// show catchcopy at fruits tile
+// show catchcopy at vegetable
 function fureainouen_get_catchcopy() {
 
 	$catchcopy = get_field( 'catchcopy' );
 	if( $catchcopy ){
 		return '<p class="catchcopy">' .$catchcopy .'</p>';
-	}
-
-	return NULL;
-}
-
-/////////////////////////////////////////////////////
-// show sweets price
-function fureainouen_get_sweets_price() {
-
-	$price = get_field( 'price' );
-	if( $price ){
-		return '<p class="price">' .$price .' 円</p>';
 	}
 
 	return NULL;
@@ -505,7 +514,7 @@ function fureainouen_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'fureainouen_customize_register' );
 
 //////////////////////////////////////////////////////
-// Google Analytics
+// GoogleGoogle Analytics
 function fureainouen_wp_head() {
 	if ( !is_user_logged_in() ) {
 		get_template_part( 'google-analytics' );
@@ -525,7 +534,7 @@ function fureainouen_handle_upload( $file )
 			$exif = exif_read_data( $file[ 'file' ] );
 			$orientation = $exif[ 'Orientation' ];
 			$max_width = 1280;
-			$max_height = 900;
+			$max_height = 1280;
 			$size = $image->get_size();
 			$width = $size[ 'width' ];
 			$height = $size[ 'height' ];

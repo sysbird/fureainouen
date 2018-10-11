@@ -16,7 +16,7 @@ Text Domain: fureainouen
 This theme, like WordPress, is licensed under the GPL.
 */
 
-/* header
+  /* header
 --------------------------------------------- */
 #header,
 #header.mini,
@@ -82,7 +82,6 @@ This theme, like WordPress, is licensed under the GPL.
 
 .home #content #blog ul.article .hentry .entry-header .author,
 .blog #content #blog ul.article .hentry .entry-header .author {
-	display: none;
 }
 
 .home #content #blog ul.article .hentry .entry-header .category {
@@ -276,7 +275,7 @@ This theme, like WordPress, is licensed under the GPL.
   width: 100%;
 }
 
-/* fruits
+/* vegetable
 --------------------------------------------- */
 #content .type-vegetable p.catchcopy {
 	display: inline;
@@ -289,6 +288,64 @@ This theme, like WordPress, is licensed under the GPL.
 .single #content .type-vegetable p.catchcopy {
 	font-size: 1rem;
 	margin-bottom: 0.8rem;
+}
+
+/* vegetable calendar
+--------------------------------------------- */
+#content table.vegetable-calendar {
+	font-size: 0.9em;
+	margin-bottom: 1.6em;
+}
+
+#content table.vegetable-calendar th,
+#content table.vegetable-calendar td {
+	text-align: center;
+	padding: 0;
+	vertical-align: middle;
+	display: block;
+	overflow: hidden;
+	*zoom: 1;
+}
+
+#content table.vegetable-calendar .title {
+	text-align: left;
+}
+
+#content table.vegetable-calendar th {
+	display: none;
+}
+
+#content table.vegetable-calendar td.title {
+	padding-top: 0.8em;
+}
+
+#content table.vegetable-calendar td.title a {
+	display: block;
+	color: #a3c277;
+}
+
+#content table.vegetable-calendar span {
+	padding: 0.2em 0;
+	width: 8.2%;
+	display: block;
+	float: left;
+}
+
+#content table.vegetable-calendar td span {
+	color: #CCC;
+}
+
+#content table.vegetable-calendar td span.best {
+	color: #FFF;
+	background: #a3c277;
+}
+
+#content table.vegetable-calendar td span.half {
+	width: 4.1%;
+}
+
+#content table.vegetable-calendar td span.half.best {
+	background: #be9586;
 }
 
 /* title text
@@ -309,19 +366,47 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .page #content .hentry:not(.type-vegetable) >.entry-header .entry-title,
-.archive .content-title,
+.archive #content .content-title,
 #content h2 a,
 #content .hentry .entry-header .entry-title {
 	color: #847d74;
+	font-weight: normal;
 }
 
 #content ul.article .hentry .entry-header,
 #content ul.article .hentry .entry-header .entry-title,
-.category-news .entry-title,
-#content h2,
-.single-news .entry-title {
+#content h2 {
 	color: #6f675d;
 	border-color: #6f675d;
+}
+
+/* category
+-------------------------------------------------------------- */
+.entry-header .category {
+	background: #847d74;
+	padding: 0.1em 0.4em;
+	border-radius: 2px;
+	color: #FFF;
+}
+
+.entry-header .category a {
+	color: #FFF;
+}
+
+.entry-header .category.stand {
+	background: #a3c277;
+}
+
+.entry-header .category.school {
+	background: #d2cb44;;
+}
+
+.entry-header .category.event {
+	background: #7bc6c3;
+}
+
+.entry-header .category.recipe {
+	background: #e6775c;
 }
 
 /* google maps
@@ -409,28 +494,52 @@ This theme, like WordPress, is licensed under the GPL.
 		height: 420px;
 	}
 
-	/* fruits page */
-	#content table.fruits-calendar {
+	/* vegetable calendar */
+	#content table.vegetable-calendar {
 		font-size: 1rem;
 	}
 
-	#content table.fruits-calendar th,
-	#content table.fruits-calendar td {
+	#content table.vegetable-calendar th,
+	#content table.vegetable-calendar td {
 		display: table-cell;
 	}
 
 
-	#content table.fruits-calendar th.title {
+	#content table.vegetable-calendar th.title {
 		border-bottom: 2px solid #e6e6e6;
 	}
 
-	#content table.fruits-calendar td.title {
+	#content table.vegetable-calendar td.title {
 		padding-top: 0;
 		width: 22%;
 	}
 
-	#content table.fruits-calendar span {
+	#content table.vegetable-calendar span {
 		padding: 0.2rem 0;
+	}
+
+	/* fruits page */
+	#content table.vegetable-calendar {
+		font-size: 1em;
+	}
+
+	#content table.vegetable-calendar th,
+	#content table.vegetable-calendar td {
+		display: table-cell;
+	}
+
+
+	#content table.vegetable-calendar th.title {
+		border-bottom: 2px solid #e6e6e6;
+	}
+
+	#content table.vegetable-calendar td.title {
+		padding-top: 0;
+		width: 22%;
+	}
+
+	#content table.vegetable-calendar span {
+		padding: 0.2em 0;
 	}
 }
 
