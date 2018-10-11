@@ -22,22 +22,6 @@ function fureainouen_init() {
 	// add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	$labels = array(
-		'name'		=> '野菜',
-		'all_items'	=> '野菜の一覧',
-		);
-
-	$args = array(
-		'labels'			=> $labels,
-		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
-		'public'			=> true,	// 公開するかどうが
-		'show_ui'			=> true,	// メニューに表示するかどうか
-		'menu_position'		=> 5,		// メニューの表示位置
-		'has_archive'		=> true,	// アーカイブページの作成
-		);
-
-	register_post_type( 'vegetables', $args );
-
 	// add post type vegetable
 	$labels = array(
 		'name'		=> '板橋区でとれる野菜・果物・花卉',
