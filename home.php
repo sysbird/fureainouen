@@ -21,7 +21,7 @@
 				</ul>
 
 				<?php if( ! is_paged() ): ?>
-					<div class="more"><a href="#" >「ブログ」をもっと見る</a></div>
+					<div class="more"><a href="#" >「農園会だより」をもっと見る</a></div>
 				<?php else:
 					$igr_pagination = get_the_posts_pagination( array(
 							'mid_size'	=> 3,
@@ -59,7 +59,7 @@
 				<?php if( has_post_thumbnail() ): ?>
 						<div class="entry-eyecatch"><?php the_post_thumbnail(  get_the_ID(), 'middle' ); ?></div>
 				<?php endif; ?>
-		
+
 				<?php the_content(''); ?>
 
 				<div class="more"><a href="<?php echo $more_url; ?>"><?php echo $more_text; ?></a></div>

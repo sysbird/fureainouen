@@ -24,9 +24,8 @@ function fureainouen_init() {
 
 	// add post type vegetable
 	$labels = array(
-		//'name'		=> '板橋区でとれる野菜・果物・花卉',
-		'name'		=> '商品',
-		'all_items'	=> 'の一覧',
+		'name'		=> '板橋区でとれる野菜・果物・花卉',
+		'all_items'	=> '板橋区でとれる野菜・果物・花卉の一覧',
 		);
 
 	$args = array(

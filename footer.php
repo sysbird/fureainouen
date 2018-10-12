@@ -5,6 +5,7 @@
 					<?php dynamic_sidebar( 'widget-area-footer' ); ?>
 				</div>
 				<div class="right">
+				<img src="/wp-content/themes/fureainouen/images/facebook.jpg" style="width: 100%">
 				</div>
 			</div>
 		</section>
