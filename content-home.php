@@ -11,14 +11,16 @@
 		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
 
 		<?php $categories = get_the_category();
-			$class = '';
+			$category_class = '';
+			$category_name = '';
 			if ( $categories ) {
 				foreach( $categories as $category ) {
-					$class .= ' ' .$category->slug;
+					$category_class .= ' ' .$category->slug;
+					$category_name .= ' ' .$category->name;
 				}
 			}
 		?>
-		<span class="category <?php echo $class; ?>">カテゴリ</span>
+		<span class="category <?php echo $category_class; ?>"><?php echo $category_name; ?></span>
 
 	</header>
 	</a>

@@ -19,7 +19,18 @@
 					<?php get_template_part( 'content', 'home' ); ?>
 				<?php endwhile; ?>
 				</ul>
-				<div class="more"><a href="#" >「ブログ」をもっと見る</a></div>
+
+				<?php if( ! is_paged() ): ?>
+					<div class="more"><a href="#" >「ブログ」をもっと見る</a></div>
+				<?php else:
+					$igr_pagination = get_the_posts_pagination( array(
+							'mid_size'	=> 3,
+							'screen_reader_text'	=> 'pagination',
+						) );
+
+					$igr_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $igr_pagination );
+					echo $igr_pagination;
+				endif; ?>
 			</div>
 		</section>
 	<?php endif; ?>
@@ -45,14 +56,11 @@
 					$more_url = get_the_permalink();
 				?>
 
-				<?php
-					if( !( false === strpos( $post->post_name, 'fruit' ) ) ){
-						echo do_shortcode('[miyazaki_en_fruits_list]');
-					}
-					else{
-						the_content('');
-					}
-				?>
+				<?php if( has_post_thumbnail() ): ?>
+						<div class="entry-eyecatch"><?php the_post_thumbnail(  get_the_ID(), 'middle' ); ?></div>
+				<?php endif; ?>
+		
+				<?php the_content(''); ?>
 
 				<div class="more"><a href="<?php echo $more_url; ?>"><?php echo $more_text; ?></a></div>
 

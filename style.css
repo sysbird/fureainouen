@@ -49,18 +49,25 @@ This theme, like WordPress, is licensed under the GPL.
 
 /* home
 --------------------------------------------- */
-.home #content .information {
+.home #content section.information {
 	background: #FFF;
 	position: relative;
 	z-index: 1;
 }
 
-.home #content .information .container {
+.home #content section.information .container {
 	padding: 1.7rem 0;
 }
 
 .home #content #blog .container {
 	padding-bottom: 1.7rem;
+}
+
+.home #content section.information .entry-eyecatch img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto 0.75em;
 }
 
 .home #content section:nth-child(odd) {
@@ -78,26 +85,6 @@ This theme, like WordPress, is licensed under the GPL.
 .home #content #blog ul.article {
 	overflow: hidden;
 	*zoom: 1;
-}
-
-.home #content #blog ul.article .hentry .entry-header .author,
-.blog #content #blog ul.article .hentry .entry-header .author {
-}
-
-.home #content #blog ul.article .hentry .entry-header .category {
-	background: #c8d199;
-	color: #000;
-	border-radius: 2px;
-	padding: 2px 5px;
-	font-size: 0.85em;
-}
-
-.home #content #blog ul.article .hentry .entry-header .category.school {
-	background: #eae099;
-}
-
-.home #content #blog ul.article .hentry .entry-header .category.event {
-	background: #f2bbad;
 }
 
 #content .more {
@@ -474,11 +461,18 @@ This theme, like WordPress, is licensed under the GPL.
 		content: "\f015";
 	}
 
-	.home #content .information .container {
+	.home #content section.information .container {
 		overflow: hidden;
 		*zoom: 1;
 	}
 
+	.home #content section.information .entry-eyecatch img {
+		float: left;
+		margin-right: 0.75em;
+		margin-bottom: 0;
+		max-width: 320px;
+	}
+		
 	#content .more {
 		text-align: right;
 	}

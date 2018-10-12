@@ -24,8 +24,9 @@ function fureainouen_init() {
 
 	// add post type vegetable
 	$labels = array(
-		'name'		=> '板橋区でとれる野菜・果物・花卉',
-		'all_items'	=> '板橋区でとれる野菜・果物・花卉の一覧',
+		//'name'		=> '板橋区でとれる野菜・果物・花卉',
+		'name'		=> '商品',
+		'all_items'	=> 'の一覧',
 		);
 
 	$args = array(
@@ -47,14 +48,15 @@ add_action( 'init', 'fureainouen_init', 0 );
 function fureainouen_query( $query ) {
 
  	if ( $query->is_home() && $query->is_main_query() ) {
-		 if( !is_paged() ){
+		if( !is_paged() ){
 			// toppage news
 			$query->set( 'posts_per_page', 3 );
-		 }
-		 else{
-			//$query->set( 'offset', -3 );
+		}
+		else{
+			$page_numper = get_query_var('paged');
+			$query->set( 'offset', (($page_numper -2) *9 ) +3 );
 			$query->set( 'posts_per_page', 9 );
-		 }
+		}
 	}
 
 	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
