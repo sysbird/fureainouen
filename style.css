@@ -21,30 +21,7 @@ This theme, like WordPress, is licensed under the GPL.
 #header,
 #header.mini,
 #footer {
-	background: #FFF;
-}
-
-#header,
-#header #branding #site-title a,
-#header #branding #site-description {
-	color: #e6775c;
-}
-
-#footer {
-	background-color: #e6775c;
-}
-
-/* Menu
--------------------------------------------------------------- */
-#menu-wrapper .menu ul#menu-primary-items li a {
-	color: #e6775c;
-	border-color: #e6775c;
-}
-
-#menu-wrapper .menu #small-menu .icon,
-#menu-wrapper .menu #small-menu .icon::before,
-#menu-wrapper .menu #small-menu .icon::after {
-	background-color: #e6775c;
+	background: #EF4A00;
 }
 
 /* home
@@ -71,7 +48,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .home #content section:nth-child(odd) {
-	background: #f8f8f4; 
+	background: #f4f0e7; 
 }
 
 .home #content .more {
@@ -134,7 +111,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #footer #widget-area {
-	background: #f8f8f4;
+	background: #f4f0e7; 
 }
 
 #footer #widget-area .widget,
@@ -385,7 +362,7 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .entry-header .category.school {
-	background: #d2cb44;;
+	background: #fccf00;
 }
 
 .entry-header .category.event {
@@ -393,7 +370,8 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 .entry-header .category.recipe {
-	background: #e6775c;
+/*	background: #e6775c; */
+background: #EF4A00;
 }
 
 /* google maps
@@ -547,7 +525,7 @@ This theme, like WordPress, is licensed under the GPL.
 	
 	#header.mini {
 		height: 60px;
-		background-color: rgba(255, 255, 255, 0.9);
+		background-color: rgba(239, 74, 0, 0.9);
 	}
 
 	#menu-wrapper .menu ul#menu-primary-items li a:hover,

@@ -47,14 +47,16 @@ add_action( 'init', 'fureainouen_init', 0 );
 function fureainouen_query( $query ) {
 
  	if ( $query->is_home() && $query->is_main_query() ) {
+		$offset = 3;
+
 		if( !is_paged() ){
 			// toppage news
-			$query->set( 'posts_per_page', 3 );
+			$query->set( 'posts_per_page', $offset );
 		}
 		else{
+			$ppp = get_option('posts_per_page');
 			$page_numper = get_query_var('paged');
-			$query->set( 'offset', (($page_numper -2) *9 ) +3 );
-			$query->set( 'posts_per_page', 9 );
+			$query->set( 'offset', (( $page_numper -2 ) *$ppp ) +$offset );
 		}
 	}
 
@@ -65,6 +67,18 @@ function fureainouen_query( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'fureainouen_query' );
+
+//////////////////////////////////////////////////////
+// Set offset for pagination
+function fureainouen_found_posts($found_posts, $query) {
+
+	if ( $query->is_home() && $query->is_main_query() && is_paged() ) {
+		$offset = 6;
+        return $found_posts + $offset;
+    }
+    return $found_posts;
+}
+add_filter('found_posts', 'fureainouen_found_posts', 1, 2 );
 
 //////////////////////////////////////////////////////
 // Enqueue Scripts

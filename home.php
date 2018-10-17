@@ -23,13 +23,13 @@
 				<?php if( ! is_paged() ): ?>
 					<div class="more"><a href="#" >「農園会だより」をもっと見る</a></div>
 				<?php else:
-					$igr_pagination = get_the_posts_pagination( array(
+					$fureainouen_pagination = get_the_posts_pagination( array(
 							'mid_size'	=> 3,
 							'screen_reader_text'	=> 'pagination',
 						) );
 
-					$igr_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $igr_pagination );
-					echo $igr_pagination;
+					$fureainouen_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $fureainouen_pagination );
+					echo $fureainouen_pagination;
 				endif; ?>
 			</div>
 		</section>
