@@ -389,7 +389,7 @@ background: #EF4A00;
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
 #content .bread_crumb_wrapper {
-	background-color: #f9f7f3;
+	background-color: #f4f0e7;
 }
 
 #content ul.bread_crumb {
@@ -406,17 +406,17 @@ background: #EF4A00;
 }
 
 #content ul.bread_crumb li a {
-	color: #6f675d;
+	color: #999;
 }
 
-#content ul.bread_crumb li a:after {
+#content ul.bread_crumb li:after {
 	content: "\f105";
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
 	padding-left: 0.4rem;
-	padding-right: 0.2rem;
+	padding-right: 0.4rem;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

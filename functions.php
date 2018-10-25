@@ -54,11 +54,15 @@ function fureainouen_query( $query ) {
 			$query->set( 'posts_per_page', $offset );
 		}
 		else{
+			// blog pagination
 			$ppp = get_option('posts_per_page');
 			$page_numper = get_query_var('paged');
 			$query->set( 'offset', (( $page_numper -2 ) *$ppp ) +$offset );
 		}
 	}
+
+//	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
+//	}
 
 	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
 		// vegetable
@@ -370,69 +374,6 @@ function fureainouen_query_vars( $vars ){
 add_filter( 'query_vars', 'fureainouen_query_vars' );
 
 /////////////////////////////////////////////////////
-// Add WP REST API Endpoints
-function fureainouen_rest_api_init() {
-	register_rest_route( 'get_page', '/(?P<pagetitle>.*)', array(
-		'methods' => 'GET',
-		'callback' => 'fureainouen_get_page',
-		) );
-}
-add_action( 'rest_api_init', 'fureainouen_rest_api_init' );
-
-function fureainouen_get_page( $params ) {
-/*
-	$page = get_page_by_title( urldecode( $params['pagetitle'] ));
-	if( $page ) {
-		return new WP_REST_Response( array(
-			'id'		=> $page->ID,
-			'title'		=> get_the_title( $page->ID ),
-			'content'	=> apply_filters( 'the_content', $page->post_content )
-		) );
-	}
-	else{
-		$response = new WP_Error('error_code', 'Sorry, no posts matched your criteria.' );
-		return $response;
-	}
-*/
-	$find = FALSE;
-	$id = 0;
-	$title = '';
-	$content = '';
-
-	$args = array(
-		'title'			=> urldecode( $params[ 'pagetitle' ] ),
-		'posts_per_page'	=> 1,
-		'post_type'		=> 'page',
-		'post_status'		=> 'publish',
-	);
-
-	$the_query = new WP_Query($args);
-	if ( $the_query->have_posts() ) :
-		$find = TRUE;
-		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$id = get_the_ID();
-			$title = get_the_title( );
-			$content = apply_filters('the_content', get_the_content() );
-			break;
-		endwhile;
-
-		wp_reset_postdata();
-	endif;
-
-	if($find) {
-		return new WP_REST_Response( array(
-			'id'		=> $id,
-			'title'		=> $title,
-			'content'	=> $content,
-		) );
-	}
-	else{
-		$response = new WP_Error('error_code', 'Sorry, no posts matched your criteria.' );
-		return $response;
-	}
-}
-
-/////////////////////////////////////////////////////
 // show catchcopy at vegetable
 function fureainouen_get_catchcopy() {
 
@@ -443,6 +384,58 @@ function fureainouen_get_catchcopy() {
 
 	return NULL;
 }
+
+//////////////////////////////////////////////////////
+// bread crumb
+function fureainouen_en_content_header( $arg ){
+
+	$html = '';
+
+	if( !is_home()){
+
+		$html = '<div class="bread_crumb_wrapper"><ul class="bread_crumb container">';
+
+		$html .=  '<li><a href="'.get_bloginfo('url').'" >ホーム</a></li>';
+	
+		//投稿記事ページとカテゴリーページでの、カテゴリーの階層を表示
+		$cats = '';
+		$cat_id = '';
+		if ( is_single() ) {
+			$cats = get_the_category();
+			if( isset($cats[0]->term_id) ) $cat_id = $cats[0]->term_id;
+		}
+		else if ( is_category() ) {
+			$cats = get_queried_object();
+			$cat_id = $cats->parent;
+		}
+
+		$cat_list = array();
+		while ($cat_id != 0){
+			$cat = get_category( $cat_id );
+			$cat_link = get_category_link( $cat_id );
+			array_unshift( $cat_list, '<a href="'.$cat_link.'">'.$cat->name.'</a>' );
+			$cat_id = $cat->parent;
+		}
+		foreach($cat_list as $value){
+			$html .=  '<li>'.$value.'</li>';
+		}
+	
+		if ( is_singular() ) {
+		}
+		else if( is_archive() ){
+			// only news & child
+			$html .= '<li>' .single_cat_title( '', false ) .'</li>';
+		}
+		else if( is_search() ) $html .=  '<li>' . sprintf( __( 'Search Results: %s', 'birdfield' ), esc_html( get_search_query() ) ) .'</li>';
+		else if( is_404() ) $html .=  '<li>' .__( 'Error 404 - Not Found', 'birdfield' ) .'</li>';
+
+		$html .= '</ul></div>';
+	}
+
+	return $html;
+
+}
+add_action( 'birdfield_content_header', 'fureainouen_en_content_header' );
 
 //////////////////////////////////////////////////////
 // show eyecarch on dashboard
@@ -465,17 +458,6 @@ function fureainouen_manage_posts_custom_column( $column_name, $post_id ) {
 add_action( 'manage_posts_custom_column', 'fureainouen_manage_posts_custom_column', 10, 2 );
 add_action( 'manage_pages_custom_column', 'fureainouen_manage_posts_custom_column', 10, 2 );
 
-//////////////////////////////////////////////////////
-// add body class
-function fureainouen_body_class( $classes ) {
-	if ( is_page() ) {
-		$page = get_post( get_the_ID() );
-		$classes[] = $page->post_name;
-	}
-
-	return $classes;
-}
-add_filter( 'body_class', 'fureainouen_body_class' );
 
 //////////////////////////////////////////////////////
 // login logo

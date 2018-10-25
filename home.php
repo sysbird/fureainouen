@@ -12,7 +12,8 @@
 	<?php if ( have_posts()) : ?>
 		<section id="blog">
 			<div class="container">
-				<h2><a href="#">農園会だより</a></h2>
+				<?php $category_news = get_category_by_slug( 'news' ); ?>
+				<h2><a href="#"><?php echo $category_news->cat_name; ?></a></h2>
 
 				<ul class="article">
 				<?php while ( have_posts()) : the_post(); ?>
@@ -21,7 +22,7 @@
 				</ul>
 
 				<?php if( ! is_paged() ): ?>
-					<div class="more"><a href="#" >「農園会だより」をもっと見る</a></div>
+					<div class="more"><a href="<?php echo get_category_link( $category_news->cat_ID ); ?>" >「<?php echo $category_news->cat_name; ?>」をもっと見る</a></div>
 				<?php else:
 					$fureainouen_pagination = get_the_posts_pagination( array(
 							'mid_size'	=> 3,
