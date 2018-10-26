@@ -388,35 +388,43 @@ background: #EF4A00;
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb_wrapper {
+#content .bread_crumb {
 	background-color: #f4f0e7;
+	color: #847d74;
+	font-size: 0.9rem;
 }
 
-#content ul.bread_crumb {
+#content .bread_crumb ul {
 	list-style-type: none;
-	color: #999;
-	font-size: 0.9rem;
 	margin: 0 auto;
-	padding: 0.4rem 0;
+	padding: 0.3rem 0;
 }
 
 #content .bread_crumb li {
+	vertical-align: top; 
 	display: inline-block;
 	line-height: 1;
 }
 
-#content ul.bread_crumb li a {
-	color: #999;
+#content .bread_crumb a {
+	color: #847d74;
 }
 
-#content ul.bread_crumb li:after {
-	content: "\f105";
+#content .bread_crumb ul li.singular {
+	display: none;
+	width: 12em;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#content .bread_crumb ul li a:after {
+	content: " \f105";
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
-	padding-left: 0.4rem;
-	padding-right: 0.4rem;
+	padding-right: 0.3rem;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -513,6 +521,11 @@ background: #EF4A00;
 	#content table.vegetable-calendar span {
 		padding: 0.2em 0;
 	}
+
+	#content .bread_crumb ul li.singular {
+		display: inline-block;
+	}
+	
 }
 
 @media screen and (min-width: 930px) {

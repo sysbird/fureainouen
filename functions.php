@@ -393,20 +393,40 @@ function fureainouen_en_content_header( $arg ){
 
 	if( !is_home()){
 
-		$html = '<div class="bread_crumb_wrapper"><ul class="bread_crumb container">';
-
-		$html .=  '<li><a href="'.get_bloginfo('url').'" >ホーム</a></li>';
+		$html = '<div class="bread_crumb"><ul class="container">';
+		$html .=  '<li class="home"><a href="'.get_bloginfo('url').'" >ホーム</a></li>';
 	
-		//投稿記事ページとカテゴリーページでの、カテゴリーの階層を表示
-		$cats = '';
+		$categories = '';
 		$cat_id = '';
+
 		if ( is_single() ) {
-			$cats = get_the_category();
-			if( isset($cats[0]->term_id) ) $cat_id = $cats[0]->term_id;
+			$post_type = get_post_type();
+			if ( $post_type == 'post' ) {
+				$categories = get_the_category();
+				if( isset($categories[0]->term_id) ) {
+					$cat_id = $categories[0]->term_id;
+				}
+
+				// prioritize news and child
+				$category_news = get_category_by_slug( 'news' );
+				foreach( $categories as $cat ){
+					if( $category_news->cat_ID == $cat->cat_ID || $category_news->cat_ID == $cat->parent ){
+						$cat_id = $cat->cat_ID;
+						break;
+					}
+				}
+			}
+			else {
+				// custom post type
+				$post_type_object = get_post_type_object( $post_type );
+				if ( $post_type_object->has_archive !== false ) {
+					$html .=  '<li><a href="' .get_post_type_archive_link( get_post_type()) .'">' .$post_type_object->labels->name .'</a></li>';
+				}
+			}
 		}
 		else if ( is_category() ) {
-			$cats = get_queried_object();
-			$cat_id = $cats->parent;
+			$categories = get_queried_object();
+			$cat_id = $categories->parent;
 		}
 
 		$cat_list = array();
@@ -416,24 +436,33 @@ function fureainouen_en_content_header( $arg ){
 			array_unshift( $cat_list, '<a href="'.$cat_link.'">'.$cat->name.'</a>' );
 			$cat_id = $cat->parent;
 		}
+
 		foreach($cat_list as $value){
 			$html .=  '<li>'.$value.'</li>';
 		}
 	
 		if ( is_singular() ) {
+			$html .=  '<li class="singular">' .get_the_title() .'</li>';
+		}
+		else if ( is_post_type_archive() ) {
+			// custom post type archive
+			$post_type = get_query_var( 'post_type' );
+			$html .=  '<li>' .get_post_type_object( $post_type )->label .'</li>';
 		}
 		else if( is_archive() ){
-			// only news & child
 			$html .= '<li>' .single_cat_title( '', false ) .'</li>';
 		}
-		else if( is_search() ) $html .=  '<li>' . sprintf( __( 'Search Results: %s', 'birdfield' ), esc_html( get_search_query() ) ) .'</li>';
-		else if( is_404() ) $html .=  '<li>' .__( 'Error 404 - Not Found', 'birdfield' ) .'</li>';
+		else if( is_search() ) {
+			$html .=  '<li>' . sprintf( __( 'Search Results: %s', 'birdfield' ), esc_html( get_search_query() ) ) .'</li>';
+		}
+		else if( is_404() ) {
+			$html .=  '<li>' .__( 'Error 404 - Not Found', 'birdfield' ) .'</li>';
+		}
 
 		$html .= '</ul></div>';
 	}
 
 	return $html;
-
 }
 add_action( 'birdfield_content_header', 'fureainouen_en_content_header' );
 
