@@ -24,6 +24,11 @@ This theme, like WordPress, is licensed under the GPL.
 	background: #EF4A00;
 }
 
+#header #branding #site-title {
+	font-size: 1.7em;
+	padding: 0.15em 0;
+}
+
 /* home
 --------------------------------------------- */
 .home #content section.information {
@@ -71,12 +76,12 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .more a {
 	display: block;
-	background-color: #f2f2e9;
-	color: #222327;
-	border: solid 1px #ede7e1;
+	background-color: #847d74;
+	color: #FFF;
+	border: solid 1px #847d74;
 	padding: 0.8rem;
 	border-radius: 4px;
-	font-size: 0.96rem;
+	font-size: 4.4vw;
 	width: 90%;
 	margin: 0 auto;
 }
@@ -192,6 +197,10 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .tile .hentry .entry-header .entry-title {
 	font-size: 1.4rem;
+}
+
+#content .tile .hentry .entry-header .postdate {
+	display: block;
 }
 
 #content .tile .hentry a {
@@ -348,7 +357,8 @@ This theme, like WordPress, is licensed under the GPL.
 -------------------------------------------------------------- */
 .entry-header .category {
 	background: #847d74;
-	padding: 0.1em 0.4em;
+	font-size: 0.86rem;
+	padding:  0 0.2em;
 	border-radius: 2px;
 	color: #FFF;
 }
@@ -433,6 +443,11 @@ background: #EF4A00;
 --------------------------------------------- */
 @media screen and (min-width: 660px) {
 
+	#header #branding #site-title {
+		font-size: 2rem;
+		padding: 0;
+	}
+
 	#menu-wrapper .menu ul#menu-primary-items li >a:before {
 		font-family: FontAwesome;
 		font-style: normal;
@@ -467,6 +482,10 @@ background: #EF4A00;
 		display: inline-block;
 		font-size: 1rem;
 		width: auto;
+	}
+
+	#content .tile .hentry .entry-header .postdate {
+		display: inline;
 	}
 
 	/* google maps */

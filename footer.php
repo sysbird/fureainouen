@@ -5,7 +5,9 @@
 					<?php dynamic_sidebar( 'widget-area-footer' ); ?>
 				</div>
 				<div class="right">
-				<img src="/wp-content/themes/fureainouen/images/facebook.jpg" style="width: 100%">
+					<div style="width: 100%; background: #5492BC; padding:3%; margin-bottom: 5%">
+					Facebookのタイムラインが入ります 
+				</div>
 				</div>
 			</div>
 		</section>

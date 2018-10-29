@@ -107,8 +107,10 @@
 
 		<?php endif; ?>
 
-		<section class="information">
-		<img src="/wp-content/themes/fureainouen/images/map.jpg" alt="地図" style="width: 100%;">
+		<section class="information"style="height: 100px; background: #CCC;">
+			<div class="container" >
+				地図が入ります
+			</div>
 		</section>
 
 	<?php endif; ?>
