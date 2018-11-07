@@ -16,7 +16,14 @@ Text Domain: fureainouen
 This theme, like WordPress, is licensed under the GPL.
 */
 
-  /* header
+/* Wrapper
+-------------------------------------------------------------- */
+.wrapper {
+	font-family: 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+	color: #4d3636;
+}
+
+ /* header
 --------------------------------------------- */
 #header,
 #header.mini,
@@ -76,18 +83,24 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .more a {
 	display: block;
-	background-color: #847d74;
-	color: #FFF;
-	border: solid 1px #847d74;
+	color: #4d3636;
+	border: solid 2px #4d3636;
 	padding: 0.8rem;
-	border-radius: 4px;
+	border-radius: 2px;
 	font-size: 4.4vw;
 	width: 90%;
 	margin: 0 auto;
 }
 
+#content .more a:hover {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	opacity: 0.8;
+  text-decoration: none;
+}
+
 #content .more a:before {
-	content: "\f054";
+	content: "\f0da";
+	padding-right: 0.2125rem;
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
@@ -122,7 +135,7 @@ This theme, like WordPress, is licensed under the GPL.
 #footer #widget-area .widget,
 #footer #widget-area .widget a,
 #footer #searchform #s {
-	color: #6f675d;
+	color: #4d3636;
 }
 
 #widget-area .widget h3 {
@@ -143,29 +156,6 @@ This theme, like WordPress, is licensed under the GPL.
 
 #footer #widget-area .right  {
 	width: 100%;
-}
-
-#footer #widget-area a.contact {
-	display: inline-block;
-	text-decoration: none;
-	background-color: #847d74;
-	color: #FFF;
-	padding: 0 15px;
-	line-height:  2.4;
-	border-radius: 20px;
-	font-size: 0.9rem;
-	margin-top: 20px;
-}
-
-#footer #widget-area .contact:before {
-	content: "\f0e0";
-	font-family: FontAwesome;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	padding-right: 5px;
 }
 
 #footer #widget-area .menu .home {
@@ -294,7 +284,7 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content table.vegetable-calendar td.title a {
 	display: block;
-	color: #a3c277;
+	color: #4d3636;
 }
 
 #content table.vegetable-calendar span {
@@ -314,11 +304,25 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #content table.vegetable-calendar td span.half {
-	width: 4.1%;
+	background: #cae3a8;
 }
 
-#content table.vegetable-calendar td span.half.best {
-	background: #be9586;
+#content .vegetable-meta {
+	overflow: hidden;
+	*zoom: 1;
+}
+
+#content .vegetable-meta span {
+	display: block;
+	float: left;
+	margin-right: 0.4em;
+	background: #f4f0e7;
+	font-size: 0.9em;
+	width: 4.2em;
+	height: 4.2em;
+	padding-top: 1.6em;
+	text-align: center;
+	border-radius: 50%;
 }
 
 /* title text
@@ -329,8 +333,8 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
-	color: #847d74;
-	border-color: #847d74;
+	color: #4d3636;
+	border-color: #4d3636;
 }
 
 #content h2 {
@@ -342,29 +346,33 @@ This theme, like WordPress, is licensed under the GPL.
 .archive #content .content-title,
 #content h2 a,
 #content .hentry .entry-header .entry-title {
-	color: #847d74;
+	color: #4d3636;
 	font-weight: normal;
 }
 
 #content ul.article .hentry .entry-header,
 #content ul.article .hentry .entry-header .entry-title,
 #content h2 {
-	color: #6f675d;
-	border-color: #6f675d;
+	color: #4d3636;
+	border-color: #4d3636;
 }
 
 /* category
 -------------------------------------------------------------- */
 .entry-header .category {
 	background: #847d74;
-	font-size: 0.86rem;
-	padding:  0 0.2em;
-	border-radius: 2px;
+	font-size: 0.8rem;
+	padding:  1px 5px;
+	border-radius: 12px;
 	color: #FFF;
 }
 
 .entry-header .category a {
 	color: #FFF;
+}
+
+.entry-header .category a:hover {
+  	text-decoration: none;
 }
 
 .entry-header .category.stand {
@@ -398,45 +406,42 @@ background: #EF4A00;
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb {
+#content .bread_crumb_wrapper {
 	background-color: #f4f0e7;
 	color: #847d74;
 	font-size: 0.9rem;
 }
 
-#content .bread_crumb ul {
+#content ul.bread_crumb {
 	list-style-type: none;
 	margin: 0 auto;
-	padding: 0.3rem 0;
+	padding: 0.4em 0;
 }
 
 #content .bread_crumb li {
-	vertical-align: top; 
 	display: inline-block;
 	line-height: 1;
+	vertical-align: top; 
 }
 
-#content .bread_crumb a {
+#content ul.bread_crumb li a {
 	color: #847d74;
 }
 
-#content .bread_crumb ul li.singular {
-	display: none;
-	width: 12em;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-#content .bread_crumb ul li a:after {
+#content ul.bread_crumb li a:after {
 	content: " \f105";
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
-	padding-right: 0.3rem;
+	padding-right: 0.2em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.single #content ul.bread_crumb li:last-child,
+.page #content ul.bread_crumb li:last-child {
+	display: none;
 }
 
 /* Media queries for responsive design
@@ -544,10 +549,34 @@ background: #EF4A00;
 	#content .bread_crumb ul li.singular {
 		display: inline-block;
 	}
-	
+
+	.single #content ul.bread_crumb li:last-child,
+	.page #content ul.bread_crumb li:last-child {
+		display: inline-block;
+		width: 12em;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
 }
 
-@media screen and (min-width: 930px) {
+/* --- PCs --- */
+@media screen and (min-width: 660px) {
+	.two-columns {
+	  display: -webkit-flex;
+	  display: flex;
+	}
+	.two-columns .entry-eyecatch {
+	  width: 320px;
+	  margin-right: 3%;
+	}
+	
+	.two-columns .entry-content {
+	  width: calc(100% - 320px);
+	}
+  }
+  
+  @media screen and (min-width: 930px) {
 
 	#header {
 		height: 80px;

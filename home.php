@@ -58,12 +58,19 @@
 				?>
 
 				<?php if( has_post_thumbnail() ): ?>
+					<div class="two-columns">
 						<div class="entry-eyecatch"><?php the_post_thumbnail(  get_the_ID(), 'middle' ); ?></div>
+						<div class="entry-content">
 				<?php endif; ?>
 
 				<?php the_content(''); ?>
 
 				<div class="more"><a href="<?php echo $more_url; ?>"><?php echo $more_text; ?></a></div>
+
+				<?php if( has_post_thumbnail() ): ?>
+						</div>
+					</div>
+				<?php endif; ?>
 
 			</div>
 		</section>
@@ -86,7 +93,7 @@
 		?>
 
 		<?php $more_url = get_post_type_archive_link( 'vegetable' );
-				$more_text = get_post_type_object( 'vegetable' )->labels->singular_name;;
+			$more_text = get_post_type_object( 'vegetable' )->labels->singular_name;
 		?>
 		<section class="information">
 			<div class="container">
