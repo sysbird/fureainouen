@@ -47,6 +47,7 @@
 				if ( $the_query->have_posts() ) :
 					while ( $the_query->have_posts() ) : $the_query->the_post();
 						if( !$tag_count ){
+							echo '<h2>このレシピに使われている野菜</h2>';
 							echo '<div class="tile">';
 						}
 

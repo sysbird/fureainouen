@@ -68,7 +68,7 @@
 				if ( $the_query->have_posts() ) :
 					while ( $the_query->have_posts() ) : $the_query->the_post();
 						if( !$recipe_count ){
-							echo '<h2>' .$vegetable_title .'を使ったやつ</h2>';
+							echo '<h2>' .$vegetable_title .'を使ったレシピ</h2>';
 							echo '<div class="tile">';
 						}
 
