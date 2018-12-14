@@ -2,6 +2,11 @@
 // File fureinouen.js.
 jQuery(function() {
 
+	// Google Maps
+	if( jQuery( '#map-canvas').length ){
+		google.maps.event.addDomListener(window, 'load',  ita_google_maps);
+	}
+
 	jQuery( window ).load(function() {
 
 		// home grid
@@ -40,13 +45,6 @@ jQuery(function() {
 		// Header Slider
 		jQuery( '.slider[data-interval]' ).fureinouen_Slider();
 
-		// gallery columns tile
-		jQuery.each(  jQuery ( ' .gallery' ),  function(){
-			gallery_class = jQuery( this ).attr( 'class' );
-			gallery_columns = String(gallery_class.match( /gallery-columns-\d/ ));
-			gallery_columns = gallery_columns.replace( 'gallery-columns-', '' );
-				jQuery( this ).find( '.gallery-item').tile( parseInt( gallery_columns ));
-			});
 	});
 
 	// Navigation for mobile
@@ -55,7 +53,17 @@ jQuery(function() {
 		jQuery( this ).toggleClass( "current" );
 	});
 
-	// Windows Scroll
+	// My mapp scroll enable
+	var map = jQuery('#gmap iframe');
+	map.css('pointer-events', 'none');
+	jQuery('#gmap').click(function() {
+		map.css('pointer-events', 'auto');
+	});
+	map.mouseout(function() {
+		map.css('pointer-events', 'none');
+	})
+
+// Windows Scroll
 	var totop = jQuery( '#back-top' );
 	totop.hide();
 	jQuery( window ).scroll(function () {
@@ -106,3 +114,53 @@ jQuery.fn.fureinouen_Slider = function(){
 		}, fureinouen_interval );
 	});
 };
+
+
+////////////////////////////////////////
+// Google Maps for access
+function ita_google_maps() {
+		var zoom = 15;
+
+		var latlng_1 = new google.maps.LatLng( 35.777789, 139.653109 );
+		var latlng_3 = new google.maps.LatLng( 35.780096, 139.638470 );
+
+		var mapOptions = {
+			zoom: zoom,
+			center: latlng_3,
+			scrollwheel: false,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			scaleControl: true,
+			scaleControlOptions: {
+				position: google.maps.ControlPosition.BOTTOM_LEFT
+			},
+			mapTypeControlOptions: {
+				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'm_map']
+			}
+		}
+		var map = new google.maps.Map( document.getElementById('map-canvas'), mapOptions );
+	
+		var map_icon_3 = jQuery( '#map_icon_path' ).val() + '/icon_stand_3.png' ;
+		var marker_3 = new google.maps.Marker({
+			position: latlng_3,
+			map: map,
+			icon: map_icon_3
+		});
+	
+		new google.maps.InfoWindow({
+			content: '3号農産物直売スタンド<br><a href="https://goo.gl/maps/MjZRW23ovpG2" style="display :block;padding-top: 5px; font-size: 0.9em;" target="_blank">地図を拡大表示</a>'
+		}).open( marker_3.getMap(), marker_3 );
+
+		var map_icon_1 = jQuery( '#map_icon_path' ).val() + '/icon_stand_1.png' ;
+		var marker_1 = new google.maps.Marker({
+			position: latlng_1,
+			map: map,
+			icon: map_icon_1,
+			title: '畑 3'
+		});
+	
+		new google.maps.InfoWindow({
+			content: '1号農産物直売スタンド<br><a href="https://goo.gl/maps/QHkG8zNsXPo" style="display :block;padding-top: 5px; font-size: 0.9em;" target="_blank">地図を拡大表示</a>'
+		}).open( marker_1.getMap(), marker_1 );
+	
+	}
+	

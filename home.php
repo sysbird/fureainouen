@@ -114,10 +114,8 @@
 
 		<?php endif; ?>
 
-		<section class="information"style="height: 100px; background: #CCC;">
-			<div class="container" >
-				地図が入ります
-			</div>
+		<section class="information" id="gmap">
+			<iframe src="https://www.google.com/maps/d/embed?mid=1MDTh5UGRFR7LeC6E4kc2hFGc0S1Wwa0r&z=14" width="100%" height="420"></iframe>
 		</section>
 
 	<?php endif; ?>

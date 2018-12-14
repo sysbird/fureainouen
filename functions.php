@@ -61,10 +61,7 @@ function fureainouen_query( $query ) {
 		}
 	}
 
-//	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
-//	}
-
-	if ($query->is_main_query() && is_post_type_archive('vegetable')) {
+	if (!is_admin() && $query->is_main_query() && is_post_type_archive('vegetable')) {
 		// vegetable
 		$query->set( 'posts_per_page', -1 );
 		$query->set( 'orderby', 'rand' );
@@ -92,7 +89,7 @@ function fureainouen_scripts() {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 
 	if ( is_page() || is_home() ) {
-		wp_enqueue_script( 'googlemaps', '//maps.googleapis.com/maps/api/js?key=AIzaSyCEFPK8jnSbZX82eWyq8KGSDdttomacAIU' );
+		wp_enqueue_script( 'googlemaps', '//maps.googleapis.com/maps/api/js?key=AIzaSyAlofBWp1v_u6vh3zSDXz-kpHLBwypX8RQ' );
 	}
 
 	// Google Fonts
@@ -122,8 +119,8 @@ add_action( 'wp_print_styles', 'fureainouen_deregister_styles', 10 );
 // Shortcode Goole Maps
 function fureainouen_map ( $atts ) {
 
-	$output = '<div id="map-canvas">地図はいります </div>';
-	$output .= '<input type="hidden" id="map_icon_path" value="' .get_stylesheet_directory_uri() .'/images">';
+	$output ='<iframe src="https://www.google.com/maps/d/embed?mid=1MDTh5UGRFR7LeC6E4kc2hFGc0S1Wwa0r" width="100%" height="480"></iframe>';
+
 	return $output;
 }
 add_shortcode( 'fureainouen_map', 'fureainouen_map' );
@@ -162,7 +159,7 @@ function fureainouen_vegetable_calendar ( $atts ) {
 		'post_type'	=> 'vegetable',
 		'post_status'	=> 'publish',
 		'meta_key'		=> 'type',
-		'orderby'		=> 'meta_value',
+//		'orderby'		=> 'meta_value',
 	);
 
 	$the_query = new WP_Query($args);
@@ -421,9 +418,9 @@ add_action( 'manage_pages_custom_column', 'fureainouen_manage_posts_custom_colum
 function fureainouen_login_head() {
 
 	$url = get_stylesheet_directory_uri() .'/images/login.png';
-	echo '<style type="text/css">.login h1 a { background-image:url(' .$url .'); height: 117px; width: 151px; background-size: 100% 100%;}</style>';
+	echo '<style type="text/css">.login h1 a { background-image:url(' .$url .'); height: 40px; width: 320px; background-size: 100% 100%;}</style>';
 }
-//add_action('login_head', 'fureainouen_login_head');
+add_action('login_head', 'fureainouen_login_head');
 
 //////////////////////////////////////////////////////
 // remove emoji

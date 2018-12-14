@@ -46,7 +46,7 @@
 							<span class="best"><?php echo $month; ?></span>
 					<?php	}
 						else{ ?>
-							<span><?php echo $i; ?> </span>
+							<span><?php echo $month; ?> </span>
 						<?php	}
 					} ?>
 
