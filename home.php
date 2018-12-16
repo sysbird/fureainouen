@@ -115,7 +115,7 @@
 		<?php endif; ?>
 
 		<section class="information" id="gmap">
-			<iframe src="https://www.google.com/maps/d/embed?mid=1MDTh5UGRFR7LeC6E4kc2hFGc0S1Wwa0r&z=14" width="100%" height="420"></iframe>
+			<iframe src="https://www.google.com/maps/d/embed?mid=1KoOdvUUX1E2U3voCv5yaHNNYS7dTwabY&hl=ja&z=14" width="100%" height="420"></iframe>
 		</section>
 
 	<?php endif; ?>

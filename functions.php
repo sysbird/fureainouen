@@ -88,10 +88,6 @@ function fureainouen_scripts() {
 	// css
 	wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 
-	if ( is_page() || is_home() ) {
-		wp_enqueue_script( 'googlemaps', '//maps.googleapis.com/maps/api/js?key=AIzaSyAlofBWp1v_u6vh3zSDXz-kpHLBwypX8RQ' );
-	}
-
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 
@@ -114,16 +110,6 @@ function fureainouen_deregister_styles() {
 	wp_dequeue_style( 'birdfield-google-font' );
  }
 add_action( 'wp_print_styles', 'fureainouen_deregister_styles', 10 );
-
-//////////////////////////////////////////////////////
-// Shortcode Goole Maps
-function fureainouen_map ( $atts ) {
-
-	$output ='<iframe src="https://www.google.com/maps/d/embed?mid=1MDTh5UGRFR7LeC6E4kc2hFGc0S1Wwa0r" width="100%" height="480"></iframe>';
-
-	return $output;
-}
-add_shortcode( 'fureainouen_map', 'fureainouen_map' );
 
 //////////////////////////////////////////////////////
 // Shortcode vegetable Calendar Link
