@@ -136,7 +136,7 @@ function fureainouen_vegetable_calendar ( $atts ) {
 		'title' => 'no'
 		), $atts ) );
 
-	$html_table_header = '<table class="vegetable-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span><span>1月</span><span>2月</span><span>3月</span></th></tr>';
+	$html_table_header = '<table class="vegetable-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span></th></tr>';
 	$html_table_footer = '</tbody></table>';
 	$html = '';
 
@@ -171,16 +171,11 @@ function fureainouen_vegetable_calendar ( $atts ) {
 		$html .= '<td class="data">';
 		for( $i = 1; $i <= 12; $i++ ){
 
-			$month = $i +3;
-			if( 12 < $month ){
-				$month -= 12;
-			}
-
-			if( $selected && in_array( $month, $selected ) ) {
-				$html .= '<span class="best">' .$month .'</span>';
+			if( $selected && in_array( $i, $selected ) ) {
+				$html .= '<span class="best">' .$i .'</span>';
 			}
 			else{
-				$html .= '<span>' .$month .'</span>';
+				$html .= '<span>' .$i .'</span>';
 			}
 		}
 

@@ -6,7 +6,7 @@
 				</div>
 				<div class="right">
 					<div style="width: 100%; background: #5492BC; padding:3%; margin-bottom: 5%">
-					Facebookのタイムラインが入ります 
+					Facebook
 				</div>
 				</div>
 			</div>

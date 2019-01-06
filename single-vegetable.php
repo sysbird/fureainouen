@@ -31,22 +31,17 @@
 			<?php $selected = get_field( 'calendar' );  // 収穫カレンダー ?>
 				<?php if(is_array($selected)): ?>
 
-				<table class="vegetable-calendar"><tbody><tr><th class="title"><em>&nbsp;</em></th><th class="data"><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span><span>1月</span><span>2月</span><span>3月</span></th></tr>
+				<table class="vegetable-calendar"><tbody><tr><th class="title"><em>&nbsp;</em></th><th class="data"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span></th></tr>
 
 				<tr>
 					<td class="title">収穫時期</td>
 					<td class="data">
 					<?php for( $i = 1; $i <= 12; $i++ ){
-						$month = $i +3;
-						if( 12 < $month ){
-							$month -= 12;
-						}
-	
-						if( in_array( $month, $selected) ) { ?>
-							<span class="best"><?php echo $month; ?></span>
+						if( in_array( $i, $selected) ) { ?>
+							<span class="best"><?php echo $i; ?></span>
 					<?php	}
 						else{ ?>
-							<span><?php echo $month; ?> </span>
+							<span><?php echo $i; ?> </span>
 						<?php	}
 					} ?>
 

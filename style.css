@@ -143,6 +143,14 @@ This theme, like WordPress, is licensed under the GPL.
 	-moz-osx-font-smoothing: grayscale;
 }
 
+#content .more a span {
+	display: inline-block;
+	width: 7.5em;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
 #content a.fureainouen_link:before {
 	content: "\f0a9";
 	font-family: FontAwesome;
@@ -221,6 +229,10 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .tile .hentry .entry-header .entry-title {
 	font-size: 1.4rem;
+}
+
+#content .hentry .entry-header .entry-title {
+	margin-top: 0.2em;
 }
 
 #content .tile .hentry .entry-header .postdate {
@@ -395,6 +407,10 @@ This theme, like WordPress, is licensed under the GPL.
 	border-color: #4d3636;
 }
 
+#content .hentry .entry-header .postdate::before {
+	display: none;
+}
+
 /* category
 -------------------------------------------------------------- */
 .entry-header .category {
@@ -524,6 +540,10 @@ background: #EF4A00;
 	#content .more  a {
 		display: inline-block;
 		font-size: 1rem;
+		width: auto;
+	}
+
+	#content .more a span {
 		width: auto;
 	}
 
@@ -721,6 +741,7 @@ background: #EF4A00;
 	.home #content section.information .container.two-columns .entry-eyecatch img {
 		max-width: none;
 		height: 100%;
+		width: auto;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -733,7 +754,7 @@ background: #EF4A00;
 		transform: translate(-50%, -50%);
 	}
 
-	.home #content section.information .container.two-columns .entry-eyecatch img.vertical {
+	.home #content section.information .container.two-columns .entry-eyecatch.vertical img {
 		width: 100%;
 		height: auto;
 	}

@@ -1,7 +1,5 @@
 <?php $recipe = false; ?>
 <header class="entry-header">
-	<h1 class="entry-title"><?php the_title(); ?></h1>
-
 	<?php if( is_single() ) : ?>
 		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
 		<?php $categories = get_the_category();
@@ -17,6 +15,8 @@
 		?>
 		<span class="category <?php echo $class; ?>"><?php the_category( ' ' ) ?></span>
 	<?php endif; ?>
+
+	<h1 class="entry-title"><?php the_title(); ?></h1>
 
 </header>
 
