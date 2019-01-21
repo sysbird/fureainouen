@@ -1,6 +1,5 @@
 <?php
 add_filter( 'comments_open', '__return_false' );
-add_filter('feed_links_show_comments_feed', '__return_false' );
 
 //////////////////////////////////////////////////////
 // Setup Theme
@@ -134,7 +133,7 @@ add_shortcode( 'fureainouen_vegetable_calendar_link', 'fureainouen_vegetable_cal
 function fureainouen_vegetable_calendar ( $atts ) {
 
 	extract( shortcode_atts( array(
-		'id' => ''
+		'title' => 'no'
 		), $atts ) );
 
 	$html_table_header = '<table class="vegetable-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span></th></tr>';
@@ -142,20 +141,12 @@ function fureainouen_vegetable_calendar ( $atts ) {
 	$html = '';
 
 	$args = array(
-		'post_type'		=> 'vegetable',
+		'posts_per_page' => -1,
+		'post_type'	=> 'vegetable',
 		'post_status'	=> 'publish',
+		'meta_key'		=> 'type',
+//		'orderby'		=> 'meta_value',
 	);
-
-	if( is_single()){
-		// one vegetable
-		$args[ 'p' ] = $atts['id'];
-	}
-	else{
-		// all vegetable
-		$args[ 'posts_per_page' ]	=  -1;
-		$args[ 'meta_key' ]			=  'type';
-		$args[ 'orderby' ]			= 'meta_value';
-	}
 
 	$the_query = new WP_Query($args);
 	$type_current = '';
@@ -175,39 +166,33 @@ function fureainouen_vegetable_calendar ( $atts ) {
 
 		// 収穫カレンダー
 		$selected = get_field( 'calendar' );
-		if( $selected ){
-			$html .= '<tr>';
-			$html .= '<td class="title">';
+		$html .= '<tr>';
+		$html .= '<td class="title"><a href="' .get_permalink() .'">' .get_the_title() .'</a></td>';
+		$html .= '<td class="data">';
+		for( $i = 1; $i <= 12; $i++ ){
 
-			if( is_single()){
-				$html .= '収穫時期';
+			if( $selected && in_array( $i, $selected ) ) {
+				$html .= '<span class="best">' .$i .'</span>';
 			}
 			else{
-				$html .= '<a href="' .get_permalink() .'">' .get_the_title() .'</a>';
+				$html .= '<span>' .$i .'</span>';
 			}
-
-			$html .= '</td>';
-			$html .= '<td class="data">';
-			for( $i = 1; $i <= 12; $i++ ){
-
-				if( $selected && in_array( $i, $selected ) ) {
-					$html .= '<span class="best">' .$i .'</span>';
-				}
-				else{
-					$html .= '<span>' .$i .'</span>';
-				}
-			}
-
-			$html .= '</td>';
-			$html .= '</tr>';
 		}
 
+		$html .= '</td>';
+		$html .= '</tr>';
+
 		endwhile;
+
 		wp_reset_postdata();
 	endif;
 
 	if( !empty( $html )){
 		$html .= $html_table_footer;
+	}
+
+	if( 'yes' === $title ){
+		$html = '<h2>カレンダー</h2>' .$html;
 	}
 
 	return $html;
@@ -424,17 +409,12 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles', 10 );
 
 //////////////////////////////////////////////////////
-// disable comment
-add_filter( 'comments_open', '__return_false' );
-add_filter('feed_links_show_comments_feed', '__return_false' );
-
-//////////////////////////////////////////////////////
 // set favicon
 function fureainouen_favicon() {
 	echo '<link rel="shortcut icon" type="image/x-icon" href="' .get_stylesheet_directory_uri() .'/images/favicon.ico" />'. "\n";
 	echo '<link rel="apple-touch-icon" href="' .get_stylesheet_directory_uri() .'/images/webclip.png" />'. "\n";
 }
-//add_action( 'wp_head', 'fureainouen_favicon' );
+add_action( 'wp_head', 'fureainouen_favicon' );
 
 //////////////////////////////////////////////////////
 // remove theme customize

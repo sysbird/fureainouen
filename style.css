@@ -38,7 +38,7 @@ This theme, like WordPress, is licensed under the GPL.
 
 #header #branding #site-title {
 	background: url("images/logo.svg") no-repeat left center / contain;
-	width: 257px;
+	width: 258px;
 	height: 52px;
 	margin: 0;
 	text-indent: -119988px;
@@ -49,7 +49,7 @@ This theme, like WordPress, is licensed under the GPL.
 
 #header #branding #site-title a {
 	display: block;
-	width: 257px;
+	width: 258px;
 	height: 52px;
 	position: relative;
 	z-index: 2;
@@ -672,7 +672,7 @@ background: #EF4A00;
 
 	#header #branding #site-title,
 	#header #branding #site-title a {
-		width: 366px;
+		width: 370px;
 		height: 74px;
 	}
 		

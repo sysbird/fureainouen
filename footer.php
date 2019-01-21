@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ) ; ?>">ITA-FUREAINOUEN</a>
-				<?php printf( 'Copyright &copy; %s All Rights Reserved.', birdfield_get_copyright_year() ); ?>
+				<?php printf( 'Copyright &copy; %s All Rights Reserved.', date("Y") ); ?>
 			</div>
 		</div>
 		<p id="back-top"><a href="#top"><span><?php _e( 'Go Top', 'birdfield' ); ?></span></a></p>
