@@ -393,7 +393,6 @@ function fureainouen_manage_posts_custom_column( $column_name, $post_id ) {
 add_action( 'manage_posts_custom_column', 'fureainouen_manage_posts_custom_column', 10, 2 );
 add_action( 'manage_pages_custom_column', 'fureainouen_manage_posts_custom_column', 10, 2 );
 
-
 //////////////////////////////////////////////////////
 // login logo
 function fureainouen_login_head() {
@@ -417,19 +416,6 @@ function fureainouen_favicon() {
 add_action( 'wp_head', 'fureainouen_favicon' );
 
 //////////////////////////////////////////////////////
-// remove theme customize
-function fureainouen_customize_register( $wp_customize ) {
-	$wp_customize->remove_control( 'header_image' );
-	$wp_customize->remove_section( 'static_front_page' );
-	$wp_customize->remove_section( 'background_image' );
-	$wp_customize->remove_section( 'custom_css' );
-	$wp_customize->remove_section( 'colors' );
-	$wp_customize->remove_section( 'title_tagline' );
-	$wp_customize->remove_section( 'birdfield_customize' );
-}
-add_action( 'customize_register', 'fureainouen_customize_register' );
-
-//////////////////////////////////////////////////////
 // GoogleGoogle Analytics
 function fureainouen_wp_head() {
 	if ( !is_user_logged_in() ) {
@@ -437,7 +423,6 @@ function fureainouen_wp_head() {
 	}
 }
 add_action( 'wp_head', 'fureainouen_wp_head' );
-
 
 //////////////////////////////////////////////////////
 // image optimize
@@ -481,3 +466,78 @@ function fureainouen_handle_upload( $file )
 	return $file;
 }
 add_action( 'wp_handle_upload', 'fureainouen_handle_upload' );
+
+//////////////////////////////////////////////////////
+// activated theme
+function fureainouen_after_switch_theme () {
+	// enable theme option for editor
+	$role = get_role( 'editor' );
+	$role->add_cap( 'edit_theme_options' ); 
+}
+add_action('after_switch_theme', 'fureainouen_after_switch_theme');
+
+//////////////////////////////////////////////////////
+// deactivated theme
+function fureainouen_switch_theme () {
+	// disable theme option for editor
+	$role = get_role( 'editor' );
+	$role->remove_cap( 'edit_theme_options' ); 
+}
+add_action('switch_theme', 'fureainouen_switch_theme');
+
+//////////////////////////////////////////////////////
+// admin menu
+function fureainouen_admin_menu() {
+	// show theme option menu for editor
+	add_menu_page( 'テーマオプション', 'テーマオプション', 'editor', 'customize.php?return=%2Fwp-admin%2Findex.php');
+
+	// remove menu for editor
+	if( !current_user_can( 'administrator' )){
+		remove_menu_page( 'edit-comments.php' );
+		remove_menu_page( 'themes.php' );
+		remove_menu_page( 'tools.php' );
+		remove_submenu_page( 'index.php','update-core.php' );
+	}
+}
+add_action( 'admin_menu', 'fureainouen_admin_menu' );
+
+//////////////////////////////////////////////////////
+// remove default theme customize
+function fureainouen_customize_register_menu( $wp_customize ) {
+
+	$wp_customize->remove_control( 'header_image' );
+	$wp_customize->remove_section( 'static_front_page' );
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'custom_css' );
+	$wp_customize->remove_section( 'colors' );
+	$wp_customize->remove_section( 'title_tagline' );
+
+	// remove customize menu for editor
+	if( !current_user_can( 'administrator' )){
+		$wp_customize->remove_panel( "widgets" );
+		remove_action( 'customize_register', array( $wp_customize->nav_menus, 'customize_register' ), 11 );
+	}
+}
+add_action( 'customize_register', 'fureainouen_customize_register_menu' );
+
+//////////////////////////////////////////////////////
+// remove parent theme customize
+function fureainouen_customize_register( $wp_customize ) {
+
+	// remove customize menu for editor
+	if( !current_user_can( 'administrator' )){
+		$wp_customize->remove_section( 'birdfield_customize' );
+	}
+}
+add_action( 'customize_register', 'fureainouen_customize_register', 88 );
+
+//////////////////////////////////////////////////////
+// admin_init
+function fureainouen_admin_init() {
+	// hide the update message for not administrator
+	if( !current_user_can( 'administrator' )){
+		remove_action( 'admin_notices', 'update_nag', 3 );
+		remove_action( 'admin_notices', 'maintenance_nag', 10 );
+	}
+}
+add_filter( 'admin_init', 'fureainouen_admin_init' );
