@@ -9,7 +9,7 @@ jQuery(function() {
 
 	jQuery( window ).load(function() {
 		// home grid
-		if ( window.matchMedia ) {
+/*		if ( window.matchMedia ) {
 			// MediaQueryList
 			var mq = window.matchMedia( "( min-width: 930px )" );
 
@@ -36,11 +36,56 @@ jQuery(function() {
 			jQuery( "#blog ul li" ).tile( 3 );
 			jQuery( ".tile .hentry" ).tile( 3 );
 		}
-
+*/
 		// Header Slider
 		jQuery( '.slider[data-interval]' ).fureinouen_Slider();
 
 	});
+
+	// http://black-flag.net/jquery/20140610-5206.html
+	var setPrt = jQuery('.tile'),
+	setChd = setPrt.find('.hentry');
+	
+	function argHeight(){
+		prtWidth = setPrt.outerWidth();
+		chdWidth = setChd.outerWidth();
+		setNum = Math.floor(prtWidth / chdWidth);
+		chdLength = setChd.length;
+		setChd.css({height:'auto'});
+	
+		setPrt.each(function(){
+			h = 0;
+			setChd.each(function(i){
+				var self = jQuery(this),
+				i = i+1,
+				hSet = self.outerHeight(),
+				pdTop = parseInt(self.css('padding-top')),
+				pdBtm = parseInt(self.css('padding-bottom')),
+				boxSizing = self.css('box-sizing');
+				self.addClass('heightReplace');
+	
+				if(hSet > h){
+					console.log( h );	
+					h = hSet;
+				};
+	
+				if(boxSizing === 'border-box'){
+					setPrt.find('.heightReplace').css({height:h});
+				} else {
+					setPrt.find('.heightReplace').css({height:(h-(pdTop + pdBtm))});
+				}
+	
+				if(i%setNum == 0 || i == chdLength){
+					h = 0;
+					setChd.removeClass('heightReplace');
+				}
+			});
+		});
+	}
+	jQuery(window).on('load resize',function(){
+		argHeight();
+	}).resize();
+
 
 	// Navigation for mobile
 	jQuery( "#small-menu" ).click( function(){
