@@ -8,12 +8,7 @@ jQuery(function() {
 	}
 
 	jQuery( window ).load(function() {
-
 		// home grid
-		jQuery( "#blog ul li" ).tile( 3 );
-		jQuery( ".tile .hentry" ).tile( 3 );
-
-		// Browser supports matchMedia
 		if ( window.matchMedia ) {
 			// MediaQueryList
 			var mq = window.matchMedia( "( min-width: 930px )" );
@@ -28,7 +23,7 @@ jQuery(function() {
 				else {
 					// cansel
 					jQuery( '#blog ul li' ).css( 'height', 'auto' );
-					jQuery( ".tile .hentry" ).css( 'height', 'auto' );
+					jQuery( ".tile .hentry" ).tile( 2 );
 				}
 			};
 
