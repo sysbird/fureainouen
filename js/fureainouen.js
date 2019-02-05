@@ -9,7 +9,7 @@ jQuery(function() {
 
 	jQuery( window ).load(function() {
 		// home grid
-/*		if ( window.matchMedia ) {
+		if ( window.matchMedia ) {
 			// MediaQueryList
 			var mq = window.matchMedia( "( min-width: 930px )" );
 
@@ -36,13 +36,14 @@ jQuery(function() {
 			jQuery( "#blog ul li" ).tile( 3 );
 			jQuery( ".tile .hentry" ).tile( 3 );
 		}
-*/
+
 		// Header Slider
 		jQuery( '.slider[data-interval]' ).fureinouen_Slider();
 
 	});
 
 	// http://black-flag.net/jquery/20140610-5206.html
+	/*
 	var setPrt = jQuery('.tile'),
 	setChd = setPrt.find('.hentry');
 	
@@ -85,7 +86,7 @@ jQuery(function() {
 	jQuery(window).on('load resize',function(){
 		argHeight();
 	}).resize();
-
+*/
 
 	// Navigation for mobile
 	jQuery( "#small-menu" ).click( function(){
