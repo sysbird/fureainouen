@@ -42,52 +42,6 @@ jQuery(function() {
 
 	});
 
-	// http://black-flag.net/jquery/20140610-5206.html
-	/*
-	var setPrt = jQuery('.tile'),
-	setChd = setPrt.find('.hentry');
-	
-	function argHeight(){
-		prtWidth = setPrt.outerWidth();
-		chdWidth = setChd.outerWidth();
-		setNum = Math.floor(prtWidth / chdWidth);
-		chdLength = setChd.length;
-		setChd.css({height:'auto'});
-	
-		setPrt.each(function(){
-			h = 0;
-			setChd.each(function(i){
-				var self = jQuery(this),
-				i = i+1,
-				hSet = self.outerHeight(),
-				pdTop = parseInt(self.css('padding-top')),
-				pdBtm = parseInt(self.css('padding-bottom')),
-				boxSizing = self.css('box-sizing');
-				self.addClass('heightReplace');
-	
-				if(hSet > h){
-					console.log( h );	
-					h = hSet;
-				};
-	
-				if(boxSizing === 'border-box'){
-					setPrt.find('.heightReplace').css({height:h});
-				} else {
-					setPrt.find('.heightReplace').css({height:(h-(pdTop + pdBtm))});
-				}
-	
-				if(i%setNum == 0 || i == chdLength){
-					h = 0;
-					setChd.removeClass('heightReplace');
-				}
-			});
-		});
-	}
-	jQuery(window).on('load resize',function(){
-		argHeight();
-	}).resize();
-*/
-
 	// Navigation for mobile
 	jQuery( "#small-menu" ).click( function(){
 		jQuery( "#menu-primary-items" ).slideToggle();
@@ -155,53 +109,3 @@ jQuery.fn.fureinouen_Slider = function(){
 		}, fureinouen_interval );
 	});
 };
-
-
-////////////////////////////////////////
-// Google Maps for access
-function ita_google_maps() {
-		var zoom = 15;
-
-		var latlng_1 = new google.maps.LatLng( 35.777789, 139.653109 );
-		var latlng_3 = new google.maps.LatLng( 35.780096, 139.638470 );
-
-		var mapOptions = {
-			zoom: zoom,
-			center: latlng_3,
-			scrollwheel: false,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			scaleControl: true,
-			scaleControlOptions: {
-				position: google.maps.ControlPosition.BOTTOM_LEFT
-			},
-			mapTypeControlOptions: {
-				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'm_map']
-			}
-		}
-		var map = new google.maps.Map( document.getElementById('map-canvas'), mapOptions );
-	
-		var map_icon_3 = jQuery( '#map_icon_path' ).val() + '/icon_stand_3.png' ;
-		var marker_3 = new google.maps.Marker({
-			position: latlng_3,
-			map: map,
-			icon: map_icon_3
-		});
-	
-		new google.maps.InfoWindow({
-			content: '3号農産物直売スタンド<br><a href="https://goo.gl/maps/MjZRW23ovpG2" style="display :block;padding-top: 5px; font-size: 0.9em;" target="_blank">地図を拡大表示</a>'
-		}).open( marker_3.getMap(), marker_3 );
-
-		var map_icon_1 = jQuery( '#map_icon_path' ).val() + '/icon_stand_1.png' ;
-		var marker_1 = new google.maps.Marker({
-			position: latlng_1,
-			map: map,
-			icon: map_icon_1,
-			title: '畑 3'
-		});
-	
-		new google.maps.InfoWindow({
-			content: '1号農産物直売スタンド<br><a href="https://goo.gl/maps/QHkG8zNsXPo" style="display :block;padding-top: 5px; font-size: 0.9em;" target="_blank">地図を拡大表示</a>'
-		}).open( marker_1.getMap(), marker_1 );
-	
-	}
-	

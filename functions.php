@@ -133,8 +133,9 @@ add_shortcode( 'fureainouen_vegetable_calendar_link', 'fureainouen_vegetable_cal
 function fureainouen_vegetable_calendar ( $atts ) {
 
 	extract( shortcode_atts( array(
-		'title' => 'no'
-		), $atts ) );
+		'title' => 'no',
+		'id' => 0,
+		), $atts ));
 
 	$html_table_header = '<table class="vegetable-calendar"><tbody><tr><th class="title">&nbsp;</th><th class="data"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span></th></tr>';
 	$html_table_footer = '</tbody></table>';
@@ -145,8 +146,12 @@ function fureainouen_vegetable_calendar ( $atts ) {
 		'post_type'	=> 'vegetable',
 		'post_status'	=> 'publish',
 		'meta_key'		=> 'type',
-//		'orderby'		=> 'meta_value',
 	);
+
+	if( 0 !== $id ){
+		// single vegetable
+		$args['p'] = $id;
+	}
 
 	$the_query = new WP_Query($args);
 	$type_current = '';
@@ -167,7 +172,15 @@ function fureainouen_vegetable_calendar ( $atts ) {
 		// 収穫カレンダー
 		$selected = get_field( 'calendar' );
 		$html .= '<tr>';
-		$html .= '<td class="title"><a href="' .get_permalink() .'">' .get_the_title() .'</a></td>';
+
+		if( 0 !== $id ){
+			// single vegetable
+			$html .= '<td class="title">収穫時期</td>';
+		}
+		else{
+			$html .= '<td class="title"><a href="' .get_permalink() .'">' .get_the_title() .'</a></td>';
+		}
+
 		$html .= '<td class="data">';
 		for( $i = 1; $i <= 12; $i++ ){
 
@@ -198,87 +211,6 @@ function fureainouen_vegetable_calendar ( $atts ) {
 	return $html;
 }
 add_shortcode( 'fureainouen_vegetable_calendar', 'fureainouen_vegetable_calendar' );
-
-//////////////////////////////////////////////////////
-// Shortcode vegetable List
-function fureainouen_vegetable_list ( $atts ) {
-
-	ob_start();
-
-	$args = array(
-		'post_type' => 'vegetable',
-		'post_status' => 'publish',
-		'orderby'	=> 'rand',
-	);
-
-	if( is_home()){
-		$args[ 'posts_per_page' ] = 6;
-		$args[ 'meta_key' ] = '_thumbnail_id';
-	}
-	else{
-		$args[ 'posts_per_page' ] = -1;
-	}
-
-	$the_query = new WP_Query($args);
-	if ( $the_query->have_posts() ) :
-		?> <div class="tile"><?php
-
-		while ( $the_query->have_posts() ) : $the_query->the_post();
-			get_template_part( 'content', 'vegetable' );
-		endwhile;
-
-		?></div><?php
-
-		wp_reset_postdata();
-	endif;
-
-	return ob_get_clean();
-}
-add_shortcode( 'fureainouen_vegetable_list', 'fureainouen_vegetable_list' );
-
-//////////////////////////////////////////////////////
-// Shortcode link button
-function fureainouen_link ( $atts ) {
-
-	$atts = shortcode_atts( array( 'title' => '', 'url' => '#' ), $atts );
-	$title = $atts['title'];
-	$url = $atts['url'];
-
-	if( !strcmp( '#' ,$url )){
-		return '';
-	}
-
-	if( '' === $title ){
-		$title = $url;
-	}
-
-	$html = '<a href="' .esc_html( $url ) .'" class="fureainouen_link">' .$title .'</a>';
-
-	return $html;
-}
-add_shortcode( 'fureainouen_link', 'fureainouen_link' );
-
-//////////////////////////////////////////////////////
-// Shortcode popup link
-function fureainouen_popuplink ( $atts ) {
-
-	$atts = shortcode_atts( array( 'title' => '', 'pagetitle' => '' ), $atts );
-	$title = $atts['title'];
-	$pagetitle = $atts['pagetitle'];
-
-	if( !strcmp( '' ,$pagetitle )){
-		return '';
-	}
-
-	if( '' === $title ){
-		$title = $pagetitle;
-	}
-
-	$html = '<a href="#" class="fureainouen_link popup" pagetitle="' .$pagetitle .'">' .$title .'</a>';
-
-	return $html;
-}
-add_shortcode( 'fureainouen_popuplink', 'fureainouen_popuplink' );
 
 //////////////////////////////////////////////////////
 // Display the Featured Image at vegetable page

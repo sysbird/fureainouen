@@ -117,7 +117,6 @@ This theme, like WordPress, is licensed under the GPL.
 	border: solid 2px #4d3636;
 	padding: 0.6rem;
 	border-radius: 2px;
-	font-size: 4.4vw;
 	width: 90%;
 	margin: 0 auto;
 	-webkit-box-shadow: rgba(77, 54, 54, 0.2) 2px 3px 0px;
@@ -145,7 +144,7 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content .more a span {
 	display: inline-block;
-	width: 7.5em;
+	max-width: 7em;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -402,7 +401,8 @@ This theme, like WordPress, is licensed under the GPL.
 
 #content ul.article .hentry .entry-header,
 #content ul.article .hentry .entry-header .entry-title,
-#content h2 {
+#content h2,
+.home #content #blog ul.article .hentry .entry-header .entry-title {
 	color: #4d3636;
 	border-color: #4d3636;
 }
@@ -446,18 +446,6 @@ This theme, like WordPress, is licensed under the GPL.
 background: #EF4A00;
 }
 
-/* google maps
--------------------------------------------------------------- */
-#map-canvas {
-	height: 320px;
-	width: 100%;
-	margin: 1.7rem 0 0;
-}
-
-.home #map-canvas {
-	margin-top: 0;
-}
-
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
 #content .bread_crumb_wrapper {
@@ -496,6 +484,12 @@ background: #EF4A00;
 .single #content ul.bread_crumb li:last-child,
 .page #content ul.bread_crumb li:last-child {
 	display: none;
+}
+
+/* image
+--------------------------------------------- */
+.entry-content img {
+	vertical-align:bottom;
 }
 
 /* Media queries for responsive design
@@ -544,16 +538,11 @@ background: #EF4A00;
 	}
 
 	#content .more a span {
-		width: auto;
+		max-width: none;
 	}
 
 	#content .tile .hentry .entry-header .postdate {
 		display: inline;
-	}
-
-	/* google maps */
-	#map-canvas {
-		height: 420px;
 	}
 
 	/* vegetable calendar */
@@ -565,7 +554,6 @@ background: #EF4A00;
 	#content table.vegetable-calendar td {
 		display: table-cell;
 	}
-
 
 	#content table.vegetable-calendar th.title {
 		border-bottom: 2px solid #e6e6e6;

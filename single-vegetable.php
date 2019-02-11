@@ -16,7 +16,7 @@
 				<?php the_content(); ?>
 			</div>
 
-			<?php  echo do_shortcode( '[fureainouen_vegetable_calendar id="' .get_the_ID() .'"]' );  // calendar ?>
+			<?php echo do_shortcode( '[fureainouen_vegetable_calendar id="' .get_the_ID() .'"]' );  // calendar ?>
 
 			<?php //related recipe
 				$recipe_count = 0;
@@ -52,7 +52,7 @@
 
 	<?php endwhile; ?>
 
-		<div class="more"><a href="<?php echo esc_html( get_post_type_archive_link( 'vegetable' )); ?>"><?php echo esc_html(get_post_type_object( 'vegetable' )->labels->singular_name ); ?>をもっと見る</a></div>
+		<div class="more"><a href="<?php echo esc_html( get_post_type_archive_link( 'vegetable' )); ?>">「<span><?php echo esc_html(get_post_type_object( 'vegetable' )->labels->singular_name ); ?></span>」をもっと見る</a></div>
 	</div>
 
 	<?php birdfield_content_footer(); ?>

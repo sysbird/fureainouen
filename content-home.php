@@ -14,12 +14,17 @@
 			$category_name = '';
 			if ( $categories ) {
 				foreach( $categories as $category ) {
-					$category_class .= ' ' .$category->slug;
-					$category_name .= ' ' .$category->name;
+					if( strcmp( 'news', $category->slug )){
+						$category_class .= ' ' .$category->slug;
+						$category_name .= ' ' .$category->name;
+					}
 				}
 			}
 		?>
-		<span class="category <?php echo $category_class; ?>"><?php echo $category_name; ?></span>
+
+		<?php if( $category_name ): ?> 
+			<span class="category <?php echo $category_class; ?>"><?php echo $category_name; ?></span>
+		<?php endif; ?>
 		<h3 class="entry-title"><?php the_title(); ?></h3>
 
 	</header>
