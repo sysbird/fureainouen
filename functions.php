@@ -112,23 +112,6 @@ function fureainouen_deregister_styles() {
 add_action( 'wp_print_styles', 'fureainouen_deregister_styles', 10 );
 
 //////////////////////////////////////////////////////
-// Shortcode vegetable Calendar Link
-function fureainouen_vegetable_calendar_link ( $atts ) {
-
-	$html = '';
-	if ( wp_is_mobile() ){
-		$page = get_page_by_path( 'calendar' );
-		$html = '<p><a href="' .get_the_permalink( $page->ID) .'">&raquo;' .$page->post_title .'</a></p>';
-	}
-	else{
-		$html = do_shortcode( '[fureainouen_vegetable_calendar]' );
-	}
-
-	return $html;
-}
-add_shortcode( 'fureainouen_vegetable_calendar_link', 'fureainouen_vegetable_calendar_link' );
-
-//////////////////////////////////////////////////////
 // Shortcode vegetable Calendar
 function fureainouen_vegetable_calendar ( $atts ) {
 

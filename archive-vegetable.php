@@ -12,7 +12,11 @@
 				</h1>
 			</header>
 
-            <?php  echo do_shortcode( '[fureainouen_vegetable_calendar]' ); ?>
+			<?php if ( wp_is_mobile() ): ?>
+				<div class="more left"><a href="/calendar">収穫カレンダーを見る</a></div>
+			<?php else: ?>
+	            <?php  echo do_shortcode( '[fureainouen_vegetable_calendar]' ); ?>
+			<?php endif; ?>
 
 			<?php if ( have_posts() ) : ?>
 				<div class="tile">
