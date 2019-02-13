@@ -22,22 +22,20 @@ function fureainouen_init() {
 	// add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	// add post type vegetable
-	$labels = array(
-		'name'		=> '板橋区でとれる野菜・果物・花卉',
-		'all_items'	=> '板橋区でとれる野菜・果物・花卉の一覧',
+	register_post_type( 'vegetable',
+		array(
+			'labels'		=>  array(
+				'name'		=> '板橋区でとれる野菜・果物・花卉',
+				'all_items'	=> '板橋区でとれる野菜・果物・花卉の一覧',
+			),
+			'supports'		=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+			'public'		=> true,
+			'show_ui'		=> true,
+			'menu_position'	=> 5,
+			'has_archive'	=> true,
+			'show_in_rest'	=> true,
+			)
 		);
-
-	$args = array(
-		'labels'			=> $labels,
-		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
-		'public'			=> true,	// 公開するかどうが
-		'show_ui'			=> true,	// メニューに表示するかどうか
-		'menu_position'		=> 5,		// メニューの表示位置
-		'has_archive'		=> true,	// アーカイブページの作成
-		);
-
-	register_post_type( 'vegetable', $args );
 
 }
 add_action( 'init', 'fureainouen_init', 0 );
