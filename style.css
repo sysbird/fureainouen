@@ -74,10 +74,6 @@ This theme, like WordPress, is licensed under the GPL.
 	z-index: 1;
 }
 
-.home #content section.information .container {
-	padding: 1.7rem 0;
-}
-
 .home #content #blog .container {
 	padding-bottom: 1.7rem;
 }
@@ -95,10 +91,6 @@ This theme, like WordPress, is licensed under the GPL.
 
 .home #content .more {
 	margin-bottom: 0;
-}
-
-.home #content #blog {
-	padding-top: 1.7rem;
 }
 
 .home #content #blog ul.article {
@@ -160,6 +152,18 @@ This theme, like WordPress, is licensed under the GPL.
 	-moz-osx-font-smoothing: grayscale;
 	padding-right: 0.4rem;
 	margin-bottom: 1.7rem;
+}
+
+.home .container.two-columns {
+	padding-top: 2%;
+}
+
+.home .information .container:not(.two-columns)  {
+	padding-top: 1.7rem;
+}
+
+.related-item {
+	padding-top: 1.7rem;
 }
 
 /* footer
@@ -257,10 +261,6 @@ This theme, like WordPress, is licensed under the GPL.
 .home #content #blog ul.article .hentry a:hover,
 .blog #content #blog ul.article .hentry a:hover {
 	background: transparent;
-}
-
-.home #content section.information .container {
-	padding-top: 2%;
 }
 
 /* tile entry-eyecatch
@@ -381,6 +381,10 @@ This theme, like WordPress, is licensed under the GPL.
 	font-size: 2rem;
 }
 
+.home #content h2 {
+/*	padding-top: 1.7rem; */
+}
+
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
 	color: #4d3636;
 	border-color: #4d3636;
@@ -405,6 +409,10 @@ This theme, like WordPress, is licensed under the GPL.
 .home #content #blog ul.article .hentry .entry-header .entry-title {
 	color: #4d3636;
 	border-color: #4d3636;
+}
+
+.home #content #blog ul.article .hentry.sticky .entry-header .entry-title {
+	color: #EF4A00;
 }
 
 #content .hentry .entry-header .postdate::before {

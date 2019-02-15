@@ -40,6 +40,8 @@ jQuery(function() {
 		// Header Slider
 		jQuery( '.slider[data-interval]' ).fureinouen_Slider();
 
+		jQuery( '.related-item' ).fureinouen_Related_Item();
+
 	});
 
 	// Navigation for mobile
@@ -109,3 +111,32 @@ jQuery.fn.fureinouen_Slider = function(){
 		}, fureinouen_interval );
 	});
 };
+
+////////////////////////////////////////
+// Related vegetables
+jQuery.fn.fureinouen_Related_Item = function(){
+	return this.each(function(i, elem) {
+		var pagetitle  = jQuery(this).find('h2 span').text();
+		var url = '/wp-json/get_page/' + encodeURIComponent( pagetitle ) + '?_jsonp=?';
+console.log( url );
+		jQuery.ajax({
+			type: 'GET',
+			url: url,
+			dataType: 'jsonp'
+			}).done(function(data, status, xhr) {
+
+console.log( data );
+				// popup
+				jQuery.magnificPopup.open({
+					items: {
+						src: '<div  id="content"><div class="entry-title">' + data.title + '</div> ' + data.content +'</div>',
+						type: 'inline'
+					}
+				});
+
+			}).fail(function(xhr, status, error) {
+				console.log( "error!" );
+			});
+	});
+};
+

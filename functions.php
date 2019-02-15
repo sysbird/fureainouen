@@ -454,3 +454,48 @@ function fureainouen_admin_init() {
 	}
 }
 add_filter( 'admin_init', 'fureainouen_admin_init' );
+
+/////////////////////////////////////////////////////
+// Add WP REST API Endpoints
+function fureainouen_rest_api_init() {
+	register_rest_route( 'get_page', '/(?P<pagetitle>.*)', array(
+		'methods' => 'GET',
+		'callback' => 'fureainouen_get_page',
+		) );
+}
+add_action( 'rest_api_init', 'fureainouen_rest_api_init' );
+
+function fureainouen_get_page( $params ) {
+var_dump( $params );
+	$find = FALSE;
+	$id = 0;
+	$title = '';
+	$content = '';
+	$args = array(
+		'title'				=> urldecode( $params[ 'pagetitle' ] ),
+		'posts_per_page'	=> 1,
+		'post_status'		=> 'publish',
+	);
+	$the_query = new WP_Query($args);
+	if ( $the_query->have_posts() ) :
+		$find = TRUE;
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$id = get_the_ID();
+			$title = get_the_title( );
+			$content = apply_filters('the_content', get_the_content() );
+			break;
+		endwhile;
+		wp_reset_postdata();
+	endif;
+	if($find) {
+		return new WP_REST_Response( array(
+			'id'		=> $id,
+			'title'		=> $title,
+			'content'	=> $content,
+		) );
+	}
+	else{
+		$response = new WP_Error('error_code', 'Sorry, no posts matched your criteria.' );
+		return $response;
+	}
+}
