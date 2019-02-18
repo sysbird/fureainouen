@@ -2,11 +2,6 @@
 // File fureinouen.js.
 jQuery(function() {
 
-	// Google Maps
-	if( jQuery( '#map-canvas').length ){
-		google.maps.event.addDomListener(window, 'load',  ita_google_maps);
-	}
-
 	jQuery( window ).load(function() {
 		// home grid
 		if ( window.matchMedia ) {
