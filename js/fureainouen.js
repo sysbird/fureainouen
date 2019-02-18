@@ -35,7 +35,9 @@ jQuery(function() {
 		// Header Slider
 		jQuery( '.slider[data-interval]' ).fureinouen_Slider();
 
-		jQuery( '.related-item' ).fureinouen_Related_Item();
+		// Show related Posts
+		jQuery( '.related-posts' ).fureinouen_Related_Posts();
+		jQuery( '.related-vegetables' ).fureinouen_Related_Vegetables();
 
 	});
 
@@ -108,30 +110,75 @@ jQuery.fn.fureinouen_Slider = function(){
 };
 
 ////////////////////////////////////////
-// Related vegetables
-jQuery.fn.fureinouen_Related_Item = function(){
+// show Related posts on vegetable page
+jQuery.fn.fureinouen_Related_Posts = function(){
+
 	return this.each(function(i, elem) {
-		var pagetitle  = jQuery(this).find('h2 span').text();
-		var url = '/wp-json/get_page/' + encodeURIComponent( pagetitle ) + '?_jsonp=?';
-console.log( url );
+
+		var title  = jQuery(this).attr('data-tags');
+		var url = '/wp-json/get_related_posts/' + encodeURIComponent( title ) + '?_jsonp=?';
 		jQuery.ajax({
 			type: 'GET',
 			url: url,
 			dataType: 'jsonp'
 			}).done(function(data, status, xhr) {
 
-console.log( data );
-				// popup
-				jQuery.magnificPopup.open({
-					items: {
-						src: '<div  id="content"><div class="entry-title">' + data.title + '</div> ' + data.content +'</div>',
-						type: 'inline'
-					}
-				});
+				if( data.item ){
+					// add related posts on vagetables
+					var html = '';
+					jQuery.each( data.item, function( i, item ){
+						html += '<div id="' + item.id + '">';
+							html += '<a href="#">';
+						if( item.thumbnail ){
+							html += '<div class="entry-eyecatch"><img src="' + item.thumbnail + '" alt=""></div>';
+						}
+						html += '<header class="entry-header">';
+						html += '<h3 class="entry-title">' + item.title + '</h3>';
+						html += '</header></a>';
+						html += '</div>';
+					});
 
+					jQuery( '.related-posts h2' ).after( '<div class="tile">' + html + '</div>' );
+				}
 			}).fail(function(xhr, status, error) {
-				console.log( "error!" );
-			});
+		});
 	});
 };
 
+
+////////////////////////////////////////
+// show Related vegetables on recipe page 
+jQuery.fn.fureinouen_Related_Vegetables = function(){
+
+	return this.each(function(i, elem) {
+
+		var title  = jQuery(this).attr('data-tags');
+		var url = '/wp-json/get_related_vegetables/' + encodeURIComponent( title ) + '?_jsonp=?';
+		jQuery.ajax({
+			type: 'GET',
+			url: url,
+			dataType: 'jsonp'
+			}).done(function(data, status, xhr) {
+
+				if( data.item ){
+					// add related vegetables on posts
+					var html = '';
+					jQuery.each( data.item, function( i, item ){
+						html += '<div id="' + item.id + '">';
+						html += '<a href="#">';
+
+						if( item.thumbnail ){
+							html += '<div class="entry-eyecatch"><img src="' + item.thumbnail + '" alt=""></div>';
+						}
+						html += '<header class="entry-header">';
+						html += '<h3 class="entry-title">' + item.title + '</h3>';
+						html += '</header></a></div>';
+					});
+
+					jQuery( '.related-vegetables h2' ).after( '<div class="tile">' + html + '</div>' );
+				}
+
+			}).fail(function(xhr, status, error) {
+		});
+	});
+};
