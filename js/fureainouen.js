@@ -115,7 +115,7 @@ jQuery.fn.fureinouen_Related_Posts = function(){
 
 	return this.each(function(i, elem) {
 
-		var title  = jQuery(this).attr('data-tags');
+		var title  = jQuery(this).find( 'h2 span' ).text();
 		var url = '/wp-json/get_related_posts/' + encodeURIComponent( title ) + '?_jsonp=?';
 		jQuery.ajax({
 			type: 'GET',
@@ -127,8 +127,8 @@ jQuery.fn.fureinouen_Related_Posts = function(){
 					// add related posts on vagetables
 					var html = '';
 					jQuery.each( data.item, function( i, item ){
-						html += '<div id="' + item.id + '">';
-							html += '<a href="#">';
+						html += '<div id=post-"' + item.id + '" class="hentry">';
+						html += '<a href="' + item.link + '">';
 						if( item.thumbnail ){
 							html += '<div class="entry-eyecatch"><img src="' + item.thumbnail + '" alt=""></div>';
 						}
@@ -164,8 +164,8 @@ jQuery.fn.fureinouen_Related_Vegetables = function(){
 					// add related vegetables on posts
 					var html = '';
 					jQuery.each( data.item, function( i, item ){
-						html += '<div id="' + item.id + '">';
-						html += '<a href="#">';
+						html += '<div id="post-' + item.id + '" class="hentry">';
+						html += '<a href="' + item.link + '">';
 
 						if( item.thumbnail ){
 							html += '<div class="entry-eyecatch"><img src="' + item.thumbnail + '" alt=""></div>';
