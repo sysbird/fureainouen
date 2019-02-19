@@ -14,7 +14,7 @@
 			$category_name = '';
 			if ( $categories ) {
 				foreach( $categories as $category ) {
-					if( strcmp( 'news', $category->slug )){
+					if( 1 == $category->parent ){
 						$category_class .= ' ' .$category->slug;
 						$category_name .= ' ' .$category->name;
 					}

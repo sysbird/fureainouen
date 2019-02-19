@@ -162,7 +162,8 @@ This theme, like WordPress, is licensed under the GPL.
 	padding-top: 1.7rem;
 }
 
-.related-item {
+.related-vegetables,
+.related-posts {
 	padding-top: 1.7rem;
 }
 

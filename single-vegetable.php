@@ -49,7 +49,7 @@
 				} */
 			?>
 
-			<div class="related-item">
+			<div class="related-posts">
 				<h2><span><?php the_title() ?></span>を使ったレシピ</h2>
 			</div>
 	</article>

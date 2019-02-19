@@ -484,8 +484,9 @@ function fureainouen_get_related_posts( $params ) {
 	$i = 0;
 
 	$args = array(
-		'tag'		=> urldecode( $params[ 'title' ] ),
+		'tag'				=> urldecode( $params[ 'title' ] ),
 		'posts_per_page'	=> 3,
+		'orderby'			 => 'rand',
 		'post_status'		=> 'publish',
 	);
 
@@ -494,7 +495,8 @@ function fureainouen_get_related_posts( $params ) {
 		$find = TRUE;
 		while ( $the_query->have_posts() ) : $the_query->the_post();
 			$item[ $i ][ 'id' ] = get_the_ID();
-			$item[ $i ][ 'title' ] = get_the_title( );
+			$item[ $i ][ 'title' ] = get_the_title();
+			$item[ $i ][ 'link' ] = get_the_permalink();
 			if ( has_post_thumbnail( $item[ $i ][ 'id' ] )) {
 				$thumbnail = get_the_post_thumbnail( $id->ID, 'middle' );
 				if( !empty($thumbnail )){
@@ -522,8 +524,7 @@ function fureainouen_get_related_posts( $params ) {
 }
 
 /////////////////////////////////////////////////////
-// get related vegetables
-// この記事についたタグ名をタイトルに持つ投稿を取得する(レシピページ用)
+// get related vegetables on recipe
 function fureainouen_get_related_vegetables( $params ) {
 
 	$find = FALSE;
@@ -534,6 +535,7 @@ function fureainouen_get_related_vegetables( $params ) {
 
 		$args = array(
 			'title'				=> $tags[ $i ],
+			'post_type'			=> 'vegetable',
 			'posts_per_page'	=> 1,
 			'post_status'		=> 'publish',
 		);
@@ -544,6 +546,7 @@ function fureainouen_get_related_vegetables( $params ) {
 			while ( $the_query->have_posts() ) : $the_query->the_post();
 				$item[ $i ][ 'id' ] = get_the_ID();
 				$item[ $i ][ 'title' ] = get_the_title( );
+				$item[ $i ][ 'link' ] = get_the_permalink();
 				if ( has_post_thumbnail( $item[ $i ][ 'id' ] )) {
 					$thumbnail = get_the_post_thumbnail( $id->ID, 'middle' );
 					if( !empty($thumbnail )){

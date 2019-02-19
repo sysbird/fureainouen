@@ -9,7 +9,7 @@
 			if ( $categories ) {
 				foreach( $categories as $category ) {
 					$category_class .= ' ' .$category->slug;
-					if( strcmp( 'news', $category->slug )){
+					if( 1 == $category->parent ){
 						$category_class .= ' ' .$category->slug;
 						$category_name .= ' ' .$category->name;
 					}
@@ -39,12 +39,20 @@
 		) ); ?>
 </div>
 
-<?php if( $recipe ) : //related vegetable for recipe ?>
+<?php if( $recipe ) : //related vegetables on this post ?>
 	<?php $posttags = get_the_tags();
 		if ( $posttags ) {
 			$tag_count = 0;
+			$tags = '';
 			foreach ( $posttags as $tag ) {
 
+				if( $tag_count ){
+					$tags .=  ',';
+				}
+				$tags .=  urldecode( $tag->name );
+				$tag_count++;
+
+				/*
 				$args = array(
 					'title'				=> urldecode( $tag->name ),
 					'posts_per_page'	=> 1,
@@ -66,14 +74,15 @@
 					endwhile;
 			
 					wp_reset_postdata();
-				endif;
+				endif;  */
 			}
 
-			if($tag_count ){
-				echo '</div></div>';
-			}
+			if($tag_count ): ?>
+				<div class="related-vegetables" data-tags="<?php echo $tags; ?>">
+				<h2>このレシピに使われている野菜</h2>
+				</div>
+			<?php endif;
 		}
 	?>
-
 
 <?php endif; ?>
