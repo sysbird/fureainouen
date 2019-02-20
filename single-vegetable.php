@@ -17,38 +17,6 @@
 			</div>
 
 			<?php echo do_shortcode( '[fureainouen_vegetable_calendar id="' .get_the_ID() .'"]' );  // calendar ?>
-
-			<?php //related recipe
-/*				$recipe_count = 0;
-				$vegetable_title = get_the_title();
-				$args = array(
-						'tag'				=> $vegetable_title,
-						'posts_per_page'	=> 6,
-						'orderby' 			=> 'rand',
-						'post_type'			=> 'post',
-						'post_status'		=> 'publish',
-					);
-			
-				$the_query = new WP_Query($args);
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) : $the_query->the_post();
-						if( !$recipe_count ){
-							echo '<div class="related-item"><h2>' .$vegetable_title .'を使ったレシピ</h2>';
-							echo '<div class="tile">';
-						}
-
-						get_template_part( 'content', 'vegetable' );
-						$recipe_count++;
-					endwhile;
-			
-					wp_reset_postdata();
-				endif;
-
-				if($recipe_count ){
-					echo '</div></div>';
-				} */
-			?>
-
 			<div class="related-posts">
 				<h2><span><?php the_title() ?></span>を使ったレシピ</h2>
 			</div>

@@ -498,7 +498,7 @@ function fureainouen_get_related_posts( $params ) {
 			$item[ $i ][ 'title' ] = get_the_title();
 			$item[ $i ][ 'link' ] = get_the_permalink();
 			if ( has_post_thumbnail( $item[ $i ][ 'id' ] )) {
-				$thumbnail = get_the_post_thumbnail( $id->ID, 'middle' );
+				$thumbnail = get_the_post_thumbnail( $item[ $i ][ 'id' ], 'middle' );
 				if( !empty($thumbnail )){
 					if( preg_match_all( '/<img.*?src=(["\'])(.+?)\1.*?>/i', $thumbnail, $match )){
 						$item[ $i ][ 'thumbnail' ] = $match[2][0];
@@ -529,7 +529,6 @@ function fureainouen_get_related_vegetables( $params ) {
 
 	$find = FALSE;
 	$item = array();
-
 	$tags = explode(",", urldecode( $params[ 'title' ] ));
 	for( $i = 0; $i < count( $tags ); $i++ ){
 
@@ -548,7 +547,7 @@ function fureainouen_get_related_vegetables( $params ) {
 				$item[ $i ][ 'title' ] = get_the_title( );
 				$item[ $i ][ 'link' ] = get_the_permalink();
 				if ( has_post_thumbnail( $item[ $i ][ 'id' ] )) {
-					$thumbnail = get_the_post_thumbnail( $id->ID, 'middle' );
+					$thumbnail = get_the_post_thumbnail( $item[ $i ][ 'id' ], 'middle' );
 					if( !empty($thumbnail )){
 						if( preg_match_all( '/<img.*?src=(["\'])(.+?)\1.*?>/i', $thumbnail, $match )){
 							$item[ $i ][ 'thumbnail' ] = $match[2][0];
@@ -561,7 +560,7 @@ function fureainouen_get_related_vegetables( $params ) {
 		endif;
 	}
 
-	if($find) {
+	if($find) {	
 		return new WP_REST_Response( array(
 			'item'		=> $item,
 		) );

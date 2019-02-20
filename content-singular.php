@@ -51,30 +51,6 @@
 				}
 				$tags .=  urldecode( $tag->name );
 				$tag_count++;
-
-				/*
-				$args = array(
-					'title'				=> urldecode( $tag->name ),
-					'posts_per_page'	=> 1,
-					'post_type'			=> 'vegetable',
-					'post_status'		=> 'publish',
-				);
-			
-				$the_query = new WP_Query($args);
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) : $the_query->the_post();
-						if( !$tag_count ){
-							echo '<div class="related-item"><h2>このレシピに使われている野菜</h2>';
-							echo '<div class="tile">';
-						}
-
-						get_template_part( 'content', 'vegetable' );
-						$tag_count++;
-						break;
-					endwhile;
-			
-					wp_reset_postdata();
-				endif;  */
 			}
 
 			if($tag_count ): ?>
